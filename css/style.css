@@ -1,0 +1,128 @@
+*{
+
+    box-sizing: border-box;
+ }
+.contenedorNavbar{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(175, 175, 175, 0.1);
+}
+.contenedorNav{
+    width: 85%;
+}
+.logoNavbar{
+    max-width: 30px;
+    margin-right: 5px;
+}
+.logoCarrito{
+    width: 5%;
+    margin: auto;
+}
+.logoUsuario{
+    width: 5%;
+    margin: auto;
+}
+.logoCarrito img{
+    max-width: 40px;
+}
+.logoUsuario img{
+    max-width: 40px;
+}
+
+.sliderInfo{
+    max-height: 30vh;
+}
+.tituloProductos {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 6rem;
+    background-color:rgba(60, 60, 167,0.3);
+    text-align: center;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.cardsDeProductos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 50px;
+
+}
+.cardsDeProductos{
+  background-color: rgba(60, 60, 167,0.1);
+}
+.cartaProducto{
+    background-color: rgba(60, 60, 167,0.1);
+}
+.card{
+    border:0;
+}
+.textoPrecioCardProducto{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.footer{
+    height: 150px;
+    background-color: rgba(60, 60, 167,0.3);
+    display: flex;
+}
+.logoFooter{
+    height: 80%;
+    margin: 1% 2% 2% 1%;
+}
+.textosFooter{
+    margin-left: 0%;   
+}
+.tituloFooter{
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+.subtituloFooter{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.infoFooter{
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-left: 50px;
+
+}
+.logosRedesFooter{
+    width: 30px;
+
+}
+.contenedorFotoProductoCard{
+    height: 250px;
+
+}
+.fotoProductoCard{
+     object-fit: contain;
+}
+
+.productoEscondido{
+    display: none;
+}
+
+.tablaCarrito{
+    margin: 50px;
+}
+
+/* LOGIN */
+.formularioLogin{
+    height: 50vh;
+    background-color: rgba(60, 60, 167,0.1);
+    padding: 50px;
+}
+
+.formularioRegistroUsuario{
+    background-color: rgba(60, 60, 167,0.1);
+    padding: 50px;
+}

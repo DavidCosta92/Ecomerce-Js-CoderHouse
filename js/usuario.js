@@ -44,50 +44,17 @@ class Usuario{
         const pagoDebito=1;
         const pagoCredito=1.6;
     }
-
 }
+formularioRegistroUsuario.addEventListener("submit",validarFormulario);
+let campoNombre =document.getElementById("nombreU");
+let campoApellido =document.getElementById("apellidoU");
+let campoMail =document.getElementById("mailU");
+let campoContraseña =document.getElementById("contraseña");
+let campoContraseña2 =document.getElementById("contraseña2");
 
-let nombreUsuario =document.getElementById("nombreUsuario").value;
-let apellidoUsuario =document.getElementById("apellidoUsuario").value;
-let mail =document.getElementById("mail").value;
-let contraseña =document.getElementById("contraseña").value;
-let contraseña2 =document.getElementById("contraseña2").value;
-let formularioRegistroUsuario =document.getElementById("formularioRegistroUsuario");
 
-console.log("nombre usuario antes: "+nombreUsuario);
-
-formularioRegistroUsuario.addEventListener("submit", validarUsuario);
-function validarUsuario(evento){
+function validarFormulario(evento){
     evento.preventDefault();
-    usuario= new Usuario(nombreUsuario,apellidoUsuario,mail,contraseña);
-    console.log("nombre usuario despues: "+nombreUsuario);
-    console.log(usuario);
-
+    let u1= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value)
+    console.log(u1);
 }
-
-
-
-// registro
-/// pendiente por aplicar
-/*
-
-let nombreUsuario =document.getElementById("nombreUsuario");
-let apellidoUsuario =document.getElementById("apellidoUsuario");
-let mail =document.getElementById("mail");
-let contraseña =document.getElementById("contraseña");
-let contraseña2 =document.getElementById("contraseña2");
-let formularioRegistroUsuario =document.getElementById("formularioRegistroUsuario");
-
-formularioRegistroUsuario.addEventListener("submit", validarUsuario);
-
-function validarUsuario(evento){
-    if(nombreUsuario.value==""||apellidoUsuario==""||mail.value==""||contraseña.value==""||contraseña2.value==""){
-        evento.preventDefault();
-        alert("LLENE TODOS LOS CAMPOS POR FAVOR")
-    }else{
-        evento.preventDefault();
-       usuario= new Usuario(nombreUsuario,apellidoUsuario,mail,contraseña);
-        return console.log(usuario);   
-    }
-}
-*/

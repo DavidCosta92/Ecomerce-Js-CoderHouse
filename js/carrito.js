@@ -98,5 +98,4 @@ class Usuario{
 }
 
 let u1= new Usuario("david", "costa", "davidcst2991@gmail.com", "154647572");
-
 u1.mostrarCarritoTabla();

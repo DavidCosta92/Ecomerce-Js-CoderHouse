@@ -45,8 +45,8 @@ class Usuario{
         const pagoCredito=1.6;
     }
 }
+// formulario registro nuevo usuario
 formularioRegistroUsuario.addEventListener("submit",validarFormulario);
-
 let campoNombre =document.getElementById("nombreU");
 let campoApellido =document.getElementById("apellidoU");
 let campoMail =document.getElementById("mailU");
@@ -75,19 +75,13 @@ campoMail.oninput=()=>{
     }
 }
 
-
 function validarFormulario(evento){
     let u;
     evento.preventDefault();
-    if(campoNombre.value==""||campoApellido.value==""||campoMail.value==""||campoContraseña.value==""||campoContraseña.value2==""){
+    if(campoNombre.value==""||campoApellido.value==""||campoMail.value==""||campoContraseña.value==""||campoContraseña2.value==""){
         alert("todos los campos son obligatorios!")
     }else{
         u= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value);
-        localStorage.setItem("usuario", JSON.stringify(u));
+        localStorage.setItem(campoMail.value, JSON.stringify(u));
     }
-    console.log(u);
-    let usuarioJson=localStorage.getItem("usuario");
-    console.log("USUARIO EN LOCAL STORAGE"+JSON.parse(usuarioJson));
 }
-
-

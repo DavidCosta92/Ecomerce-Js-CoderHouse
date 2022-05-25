@@ -44,6 +44,66 @@ class Usuario{
         const pagoDebito=1;
         const pagoCredito=1.6;
     }
+
+    agregarCarrito(producto){
+        this.carritoCompras.push(producto)
+    }
+
+    
+    finalizarCompra(){
+        alert("Acontinuacion mostraremos el resumen de compra del usuario "+this.nombre+" "+this.apellido+"\n"+this.mostrarCarrito());       
+    }
+
+    
+    mostrarCarrito(){
+        let listaItemsCarrito="";
+        for(producto of this.carritoCompras){
+            listaItemsCarrito += "\n -"+producto.tipo +" "+producto.nombre+" $"+producto.precio;
+            this.precioCarrito+=parseFloat(producto.precio);
+         }
+         return listaItemsCarrito+". \nEl precio TOTAL del carrito es de $"+this.precioCarrito;
+    }
+    mostrarUsuario(){
+        alert("¡Bienvenido "+this.nombre+" "+this.apellido+"!")
+    }
+
+    mostrarCarritoTabla(){
+        let tablaCarrito = document.createElement("table");
+        tablaCarrito.className="table table-striped"
+        let tTiulo=document.createElement("thead");
+        let filaTitulo=document.createElement("tr");
+
+        filaTitulo.innerHTML=`
+        <th>ID Producto</th>
+        <th>Nombre Producto</th>
+        <th>Precio</th>`;
+        tTiulo.appendChild(filaTitulo);
+        tablaCarrito.appendChild(tTiulo);
+
+        let tBody = document.createElement("tBody");
+        let precioCarrito=0;   
+        for(const producto of this.carritoCompras){
+            precioCarrito+=parseInt(producto.precio);
+            let fila=document.createElement("tr");
+            fila.innerHTML=`
+                        <td>${producto.idProducto}</td>
+                        <td>${producto.tipo} ${producto.nombre}</td>
+                        <td>$ ${+producto.precio}</td>`;
+                        tBody.appendChild(fila);
+        }
+        
+            let ultimaFila=document.createElement("tr");
+            ultimaFila.innerHTML=`
+                        <td colspan="2" class="sumaTablaPrecio">PRECIO TOTAL</td>
+                        <td class="sumaTabla">$ ${+precioCarrito}</td>`;
+                        tBody.appendChild(ultimaFila);
+
+        tablaCarrito.appendChild(tBody);
+        let dondeVaTabla=document.getElementById("agregarTablaCarrito");
+        dondeVaTabla.appendChild(tablaCarrito);
+    }      
+
+
 }
 // formulario registro nuevo usuario
 formularioRegistroUsuario.addEventListener("submit",validarFormulario);

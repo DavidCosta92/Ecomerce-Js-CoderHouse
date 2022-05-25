@@ -12,6 +12,7 @@ function login(evento){
     if(usuarioRegistrado){
         if(usuarioRegistrado.contraseña==contraseñaRegistrada.value){
             alert("LOGIN EXITOSO")
+            
         }else{
             alert("CONTRASEÑA ERRONEA")
         }

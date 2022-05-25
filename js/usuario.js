@@ -46,15 +46,44 @@ class Usuario{
     }
 }
 formularioRegistroUsuario.addEventListener("submit",validarFormulario);
+
 let campoNombre =document.getElementById("nombreU");
 let campoApellido =document.getElementById("apellidoU");
 let campoMail =document.getElementById("mailU");
 let campoContraseña =document.getElementById("contraseña");
 let campoContraseña2 =document.getElementById("contraseña2");
 
+campoNombre.oninput=()=>{
+    if(!isNaN(campoNombre.value)){
+        campoNombre.style.color="red";
+    }else{
+        campoNombre.style.color="black";
+    }
+}
+campoApellido.oninput=()=>{
+    if(!isNaN(campoApellido.value)){
+        campoApellido.style.color="red";
+    }else{
+        campoApellido.style.color="black";
+    }
+}
+campoMail.oninput=()=>{
+    if(!isNaN(campoMail.value)){
+        campoMail.style.color="red";
+    }else{
+        campoMail.style.color="black";
+    }
+}
+
 
 function validarFormulario(evento){
+    let u;
     evento.preventDefault();
-    let u1= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value)
-    console.log(u1);
+    if(campoNombre.value==""||campoApellido.value==""||campoMail.value==""||campoContraseña.value==""||campoContraseña.value2==""){
+        alert("todos los campos son obligatorios!")
+    }else{
+        u= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value);
+    }
+    console.log(u)
 }
+

@@ -33,7 +33,7 @@ function cargarProductosDeArrayACards(array){
                     <p class="card-text textoPrecioCardProducto">$${producto.precio}</p>
     
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button id="agregar${producto.idProducto}" type="button" onclick="" class="btn btn-success"> Agregar </button>
+                        <button id="agregar${producto.idProducto}" type="button" onclick="agregarAlCarrito(${producto.idProducto})" class="btn btn-success"> Agregar </button>
                     </div>
                 </div>
             </div>      
@@ -78,10 +78,10 @@ function busquedaCategoria(evento){
 
 // mostrar categorias segun links nav
 let catCelular = document.getElementById("catCelular");
-let catComputadora = document.getElementById("catComputadora");
+let catComputadora = document.getElementById("catComputadoras");
 let catSmartTV = document.getElementById("catSmartTV");
-let catAuto = document.getElementById("catAuto");
-let catCamioneta = document.getElementById("catCamioneta");
+let catAuto = document.getElementById("catAutos");
+let catCamioneta = document.getElementById("catCamionetas");
 
 catCelular.onclick=()=>(mostrarCategoria("Celular"));
 catComputadora.onclick=()=>(mostrarCategoria("Computadora"));
@@ -89,3 +89,8 @@ catSmartTV.onclick=()=>(mostrarCategoria("SmartTV"));
 catAuto.onclick=()=>(mostrarCategoria("Auto"));
 catCamioneta.onclick=()=>(mostrarCategoria("Camioneta"));
 
+
+
+
+
+cargarProductosDeArrayACards(productosDisponibles);

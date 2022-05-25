@@ -138,3 +138,27 @@ const productosDisponibles=[
         idProducto:15,
     },
 ]
+
+class Producto{
+    constructor(tipo,nombre,precio,caracteristicas,img,idProducto){
+        this.tipo=tipo;
+        this.nombre=nombre;
+        this.precio=precio;
+        this.caracteristicas=caracteristicas;
+        this.img=img;
+        this.idProducto=idProducto;
+    }
+}
+let carritoCompras=[];
+function agregarAlCarrito(idProductoPorAgregar){
+    let productoPorAgregar;
+    for(const producto of productosDisponibles){
+        if(producto.idProducto==idProductoPorAgregar){
+            productoPorAgregar=producto;
+        }
+    }
+    carritoCompras.push(productoPorAgregar);
+    sessionStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
+    alert("Producto " +productoPorAgregar.nombre +" agregado al carrito correctamente")
+}
+

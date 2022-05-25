@@ -8,7 +8,7 @@ let contraseñaRegistrada =document.getElementById("contraseñaRegistrada");
 
 function login(evento){
     evento.preventDefault();
-    let usuarioRegistrado= JSON.parse(localStorage.getItem(mailRegistrado.value));
+    let usuarioRegistrado= JSON.parse(sessionStorage.getItem(mailRegistrado.value));
     if(usuarioRegistrado){
         if(usuarioRegistrado.contraseña==contraseñaRegistrada.value){
             alert("LOGIN EXITOSO")

@@ -142,6 +142,6 @@ function validarFormulario(evento){
         alert("todos los campos son obligatorios!")
     }else{
         u= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value);
-        localStorage.setItem(campoMail.value, JSON.stringify(u));
+        sessionStorage.setItem(campoMail.value, JSON.stringify(u));
     }
 }

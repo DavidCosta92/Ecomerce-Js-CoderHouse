@@ -56,9 +56,12 @@ function mostrarCategoria(categoria){
 }
 
 
+
+
+
+
 // buscar con nav.. 
 let busquedaCategoriaForm=document.getElementById("busquedaCategoria");
-console.log(busquedaCategoria);
 busquedaCategoriaForm.addEventListener("submit",busquedaCategoria);
 
 function busquedaCategoria(evento){

@@ -114,6 +114,15 @@
 .tablaCarrito{
     margin: 50px;
 }
+.sumaTablaPrecio{
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-align: center;
+}
+.sumaTabla{
+    font-weight: 900;
+    font-size: 1.2rem;
+}
 
 /* LOGIN */
 .formularioLogin{

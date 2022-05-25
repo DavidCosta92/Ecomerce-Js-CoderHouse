@@ -83,7 +83,11 @@ function validarFormulario(evento){
         alert("todos los campos son obligatorios!")
     }else{
         u= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value);
+        localStorage.setItem("usuario", JSON.stringify(u));
     }
-    console.log(u)
+    console.log(u);
+    let usuarioJson=localStorage.getItem("usuario");
+    console.log("USUARIO EN LOCAL STORAGE"+JSON.parse(usuarioJson));
 }
+
 

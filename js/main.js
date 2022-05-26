@@ -55,11 +55,6 @@ function mostrarCategoria(categoria){
     }
 }
 
-
-
-
-
-
 // buscar con nav.. 
 let busquedaCategoriaForm=document.getElementById("busquedaCategoria");
 busquedaCategoriaForm.addEventListener("submit",busquedaCategoria);
@@ -88,9 +83,5 @@ catComputadora.onclick=()=>(mostrarCategoria("Computadora"));
 catSmartTV.onclick=()=>(mostrarCategoria("SmartTV"));
 catAuto.onclick=()=>(mostrarCategoria("Auto"));
 catCamioneta.onclick=()=>(mostrarCategoria("Camioneta"));
-
-
-
-
 
 cargarProductosDeArrayACards(productosDisponibles);

@@ -51,7 +51,7 @@ function mostrarCategoria(categoria){
     }
     for(const producto of categoriaCorrecta){
         producto.classList.remove("productoEscondido");
-        producto.style.display = "flex";
+        
     }
 }
 
@@ -62,7 +62,7 @@ busquedaCategoriaForm.addEventListener("submit",busquedaCategoria);
 function busquedaCategoria(evento){
     if(isNaN(campoDeBusqueda.value)&& campoDeBusqueda.value!=""){
         evento.preventDefault();
-        let categoriaBusqueda=""+campoDeBusqueda.value;
+        let categoriaBusqueda=campoDeBusqueda.value;
         mostrarCategoria(categoriaBusqueda);
     } if(!isNaN(campoDeBusqueda.value)){
         campoDeBusqueda.oninput=()=>{

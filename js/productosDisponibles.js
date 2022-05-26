@@ -138,7 +138,7 @@ const productosDisponibles=[
         idProducto:15,
     },
 ]
-
+// aplicar a futuro, para SUBIR PRODUCTOS DESDE LA PAGINA DE CARGA de productos en vez de array...
 class Producto{
     constructor(tipo,nombre,precio,caracteristicas,img,idProducto){
         this.tipo=tipo;

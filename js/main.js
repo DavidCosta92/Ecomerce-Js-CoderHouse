@@ -1,8 +1,8 @@
-
 //PRODUCTOS
 //Obtener productos desde array
 function ArrayProductosParaViews(array){
     for(const producto of array){
+        console.log("deberia estar modificando el producto "+producto.nombre)
         producto.img="."+producto.img;
     }
     return array;
@@ -47,11 +47,9 @@ function mostrarCategoria(categoria){
     let categoriaCorrecta= document.getElementsByClassName(categoria);
     for(const producto of todosLosProductos){
        producto.classList.add("productoEscondido");
-       
     }
     for(const producto of categoriaCorrecta){
         producto.classList.remove("productoEscondido");
-        
     }
 }
 
@@ -84,4 +82,3 @@ catSmartTV.onclick=()=>(mostrarCategoria("SmartTV"));
 catAuto.onclick=()=>(mostrarCategoria("Auto"));
 catCamioneta.onclick=()=>(mostrarCategoria("Camioneta"));
 
-cargarProductosDeArrayACards(productosDisponibles);

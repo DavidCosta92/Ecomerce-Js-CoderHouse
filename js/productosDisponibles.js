@@ -1,3 +1,10 @@
+// Funciones a llamar
+
+//CORROBORA SI EL CARRO FUE TIENE PRODUCTOS GUARDADOS EN EL STORAGE
+let carritoCompras;
+obtenerCarrito();
+
+
 // base de productos en forma de array
 const productosDisponibles=[
     {
@@ -147,11 +154,69 @@ class Producto{
         this.caracteristicas=caracteristicas;
         this.img=img;
         this.idProducto=idProducto;
+        this.unidadesEnCarro=0;
     }
 }
-let carritoCompras=[];
+
+//CORROBORA SI EL CARRO FUE TIENE PRODUCTOS GUARDADOS EN EL STORAGE
+//EN CASO DE QUE NO, INICIA EL CARRO COMO VACIO;
+function obtenerCarrito(){
+    let carritoEnStorage=JSON.parse(sessionStorage.getItem("carritoCompras"));
+    if(carritoEnStorage==null){
+        carritoCompras=[];
+    } else{
+        carritoCompras=carritoEnStorage;
+    }
+}
+
+function borrarDelCarrito(idProductoPorBorrar){
+    let productoPorBorrar;
+    for(const producto of productosDisponibles){
+        if(producto.idProducto==idProductoPorBorrar){
+            productoPorBorrar=producto;
+        }
+    }
+
+//saber el indice del producto a borrar dentro del array carritoCompras, luego lo elimino y actualizo el carro
+    let indexProductoPorBorrar= carritoCompras.findIndex(producto =>producto.idProducto==idProductoPorBorrar);
+    let elementoBorrado= carritoCompras.splice(indexProductoPorBorrar,1);
+    sessionStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
+    alert("Producto " +productoPorBorrar.nombre +" borrado del carrito correctamente")
+    location.reload()
+}
+function agregarOtraUnidadEnCarro(){
+    unidadesEnCarro++;
+}
+/*
 function agregarAlCarrito(idProductoPorAgregar){
     let productoPorAgregar;
+    console.log(" mande el id "+idProductoPorAgregar+" para agregar al carro")
+    console.log("el carro actualmente esta compuesto por "+carritoCompras);
+    for(const productoEnCarro of carritoCompras){
+        console.log("estoy iterando en carrito de compras..")
+        if(productoEnCarro.idProducto==idProductoPorAgregar){
+            agregarOtraUnidadEnCarro();
+            sessionStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
+            alert("Agreagaste otra unidad de "+productoEnCarro.nombre);
+
+        } else{
+             //logica de agregar un producto nuevo
+            for(const producto of productosDisponibles){
+                if(producto.idProducto==idProductoPorAgregar){
+                    productoPorAgregar=producto;
+                }
+            }
+            carritoCompras.push(productoPorAgregar);
+            sessionStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
+            alert("Producto " +productoPorAgregar.nombre +" agregado al carrito correctamente")
+        }
+    } 
+}
+*/
+
+function agregarAlCarrito(idProductoPorAgregar){
+    let productoPorAgregar;
+    //logica de agregar un producto nuevo
     for(const producto of productosDisponibles){
         if(producto.idProducto==idProductoPorAgregar){
             productoPorAgregar=producto;
@@ -161,4 +226,5 @@ function agregarAlCarrito(idProductoPorAgregar){
     sessionStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
     alert("Producto " +productoPorAgregar.nombre +" agregado al carrito correctamente")
 }
+
 

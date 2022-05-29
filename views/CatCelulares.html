@@ -30,8 +30,8 @@
                     Categorias
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a id="catCelular" class="dropdown-item " href="CatCelulares.html">Celulares</a></li>
-                        <li><a id="catComputadoras" class="dropdown-item active" href="CatComputadoras.html">Computadoras</a></li>
+                        <li><a id="catCelular" class="dropdown-item active" href="CatCelulares.html">Celulares</a></li>
+                        <li><a id="catComputadoras" class="dropdown-item " href="CatComputadoras.html">Computadoras</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a id="catSmartTV" class="dropdown-item" href="CatSmartTVs.html">Smart TVs</a></li>
                         <li><hr class="dropdown-divider"></li>
@@ -40,10 +40,6 @@
                     </ul>
                 </li>
                 </ul>
-                <form class="d-flex" id="busquedaCategoria">
-                    <input id="campoDeBusqueda" class="form-control me-2" type="search" placeholder="Buscar por categoria" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
             </div>
             </div>
         </nav>
@@ -124,5 +120,6 @@
     <script src="../js/productosDisponibles.js"></script>
     <script src="../js/main.js"></script>
     <script>cargarProductosDeArrayACards(ArrayProductosParaViews(arrayTipos(productosDisponibles,"Celular")));</script>
+    
 </body>
 </html>

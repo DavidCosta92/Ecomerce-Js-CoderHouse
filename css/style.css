@@ -123,6 +123,14 @@
     font-weight: 900;
     font-size: 1.2rem;
 }
+.carritoVacio {
+    
+}
+.textoCarroVacio{
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-align: center;
+}
 
 /* LOGIN */
 .formularioLogin{

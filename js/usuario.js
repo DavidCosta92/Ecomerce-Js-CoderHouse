@@ -1,10 +1,12 @@
+//Class de usuario registrado
 class Usuario{
     constructor (nombre,apellido,mail,contraseña){
         this.nombre=nombre;
         this.apellido=apellido;
         this.mail=mail;
         this.contraseña=contraseña;
-        this.carritoCompras=carritoCompras;
+        let carritoCompras;
+        
         this.precioCarrito=0;
         const pagoEfectivo=0.8;
         const pagoDebito=1;
@@ -49,5 +51,7 @@ function validarFormulario(evento){
     }else{
         u= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value);
         sessionStorage.setItem(campoMail.value, JSON.stringify(u));
+        alert("¡Usuario creado correctamente! \n Bienvenido "+u.nombre)
+        window.location="../index.html";  
     }
 }

@@ -123,14 +123,28 @@
     font-weight: 900;
     font-size: 1.2rem;
 }
-.carritoVacio {
-    
-}
 .textoCarroVacio{
     font-weight: 900;
     font-size: 1.2rem;
     text-align: center;
 }
+.textoMetodoPago{
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+}
+.metodosDePago .btn{
+    width: 40%;
+    margin-left: 5%;
+}
+#importePagoEfectivo{
+    text-align: center;
+}
+.textoTablaCuotas{
+    text-align: center;
+    width: 75%;
+}
+
 
 /* LOGIN */
 .formularioLogin{
@@ -143,3 +157,5 @@
     background-color: rgba(60, 60, 167,0.1);
     padding: 50px;
 }
+
+

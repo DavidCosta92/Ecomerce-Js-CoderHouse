@@ -1,12 +1,14 @@
+let precioCarrito=0; 
 mostrarCarritoTabla();
-console.log(carritoCompras.length)
-
 function mostrarCarritoTabla(){
     let carritoCompras=JSON.parse(sessionStorage.getItem("carritoCompras"));
     let leyendaCarroVacio=document.getElementById("carritoVacio");
+    let metodosPagoCarroVacio=document.getElementById("metodosPagoCarroVacio");
+
     if(carritoCompras!=null){
         //Escoder leyenda carro vacio
         leyendaCarroVacio.classList.add("productoEscondido");
+        metodosPagoCarroVacio.classList.remove("productoEscondido");
 
         let tablaCarrito = document.createElement("table");
         tablaCarrito.className="table table-striped"
@@ -22,7 +24,7 @@ function mostrarCarritoTabla(){
         tablaCarrito.appendChild(tTiulo);
     
         let tBody = document.createElement("tBody");
-        let precioCarrito=0;   
+       // let precioCarrito=0;   
     
         for(const producto of carritoCompras){
             precioCarrito+=parseInt(producto.precio);
@@ -44,9 +46,50 @@ function mostrarCarritoTabla(){
         tablaCarrito.appendChild(tBody);
         let dondeVaTabla=document.getElementById("agregarTablaCarrito");
         dondeVaTabla.appendChild(tablaCarrito);
+
+        // carga de importes en metodos de pago efectivo
+        let valorEfectivo = document.getElementById("importePagoEfectivo");
+        valorEfectivo.innerHTML=`El precio del carrito pagando en efectivo es de $ ${+precioCarrito*0.8}`
+        let textoPagoEfectivo=document.getElementById("multiCollapseExample1");
+        textoPagoEfectivo.appendChild(valorEfectivo);
+    
+        // carga tabla de importes en metodos de pago credito
+        tablaCuotas();
     } if(carritoCompras==null||carritoCompras.length==0){
-        //Mostrar leyenda carro vacio
+        //Mostrar leyenda carro vacio y esconder metodos de pago
         leyendaCarroVacio.classList.remove("productoEscondido");
+        metodosPagoCarroVacio.classList.add("productoEscondido");
+
     }
 }
 
+function tablaCuotas(){
+    let tablaCuotas = document.createElement("table");
+        tablaCuotas.className="table table-striped textoTablaCuotas"
+        let tTiulotablaCuotas=document.createElement("thead");
+        let filaTitulotablaCuotas=document.createElement("tr");
+    
+        filaTitulotablaCuotas.innerHTML=`
+        <th>Cantidad Cuotas</th>
+        <th>Valor Cuotas</th>
+        <th>Precio Total</th>`;
+        tTiulotablaCuotas.appendChild(filaTitulotablaCuotas);
+        tablaCuotas.appendChild(tTiulotablaCuotas);
+    
+        let tBodytablaCuotas = document.createElement("tBody");
+        let precioCarritoCuotas=precioCarrito;
+        let tasaMensualInteres=0.05;   
+
+        for (let cuota=1; cuota<=12; cuota++){
+            let filaCuota=document.createElement("tr");
+            let valorCuota=Math.round((precioCarritoCuotas*(1+tasaMensualInteres*cuota))/cuota);
+            filaCuota.innerHTML=`
+                        <td>${cuota}</td>
+                        <td>$ ${valorCuota}</td>
+                        <td>$ ${valorCuota*cuota}</td>`;
+                        tBodytablaCuotas.appendChild(filaCuota);
+        }
+        tablaCuotas.appendChild(tBodytablaCuotas);
+        let dondeVaTablaCuotas =document.getElementById("importePagoCredito");
+        dondeVaTablaCuotas.appendChild(tablaCuotas);
+}

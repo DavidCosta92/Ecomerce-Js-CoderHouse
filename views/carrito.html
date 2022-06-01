@@ -89,11 +89,32 @@
 <!--CARRITO-->
     <h2 class="tituloProductos">Productos en carrito</h2>
     <div class="tablaCarrito" id="agregarTablaCarrito">
-    <div class="carritoVacio" id="carritoVacio">
-        <p class="textoCarroVacio">¡Ops! Aun no has agregado productos al carrito <a class="btn btn-success botonCarroVcio" href="../index.html" role="button">¿Quires volver al inicio?</a></p>
-            
+        <div class="carritoVacio" id="carritoVacio">
+            <p class="textoCarroVacio">¡Ops! Aun no has agregado productos al carrito <a class="btn btn-success botonCarroVcio" href="../index.html" role="button">¿Quires volver al inicio?</a></p>   
+        </div>
     </div>
-
+    <div class="metodosDePago" id="metodosPagoCarroVacio">
+        <p class="textoMetodoPago"> Consulta nuestras formas de pago</p>
+        <p>
+            <a class="btn btn-outline-success" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Efectivo</a>
+            <button class="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Tarjeta Credito</button>
+          </p>
+          <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body" id="importePagoEfectivo">
+                   
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body" id="importePagoCredito">
+                       
+                    </div>
+              </div>
+            </div>
+          </div>
     </div>
 
 

@@ -1,10 +1,7 @@
 // Funciones a llamar
-
 //CORROBORA SI EL CARRO FUE TIENE PRODUCTOS GUARDADOS EN EL STORAGE
 let carritoCompras;
 obtenerCarrito();
-
-
 // base de productos en forma de array
 const productosDisponibles=[
     {
@@ -161,13 +158,10 @@ class Producto{
 //CORROBORA SI EL CARRO FUE TIENE PRODUCTOS GUARDADOS EN EL STORAGE
 //EN CASO DE QUE NO, INICIA EL CARRO COMO VACIO;
 function obtenerCarrito(){
-    let carritoEnStorage=JSON.parse(sessionStorage.getItem("carritoCompras"));
-    if(carritoEnStorage==null){
-        carritoCompras=[];
-    } else{
-        carritoCompras=carritoEnStorage;
-    }
+    carritoCompras=JSON.parse(sessionStorage.getItem("carritoCompras"))||[];
 }
+
+    
 
 function borrarDelCarrito(idProductoPorBorrar){
     let productoPorBorrar;
@@ -187,7 +181,7 @@ function borrarDelCarrito(idProductoPorBorrar){
 function agregarOtraUnidadEnCarro(){
     unidadesEnCarro++;
 }
-/*
+/* POR TERMINAR
 function agregarAlCarrito(idProductoPorAgregar){
     let productoPorAgregar;
     console.log(" mande el id "+idProductoPorAgregar+" para agregar al carro")
@@ -216,7 +210,6 @@ function agregarAlCarrito(idProductoPorAgregar){
 
 function agregarAlCarrito(idProductoPorAgregar){
     let productoPorAgregar;
-    //logica de agregar un producto nuevo
     for(const producto of productosDisponibles){
         if(producto.idProducto==idProductoPorAgregar){
             productoPorAgregar=producto;

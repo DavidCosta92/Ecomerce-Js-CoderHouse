@@ -1,16 +1,29 @@
 let precioCarrito=0; 
-mostrarCarritoTabla();
+let leyendaCarroVacio=document.getElementById("carritoVacio");
+let metodosPagoCarroVacio=document.getElementById("metodosPagoCarroVacio");
+
+
+carritoCompras.length==0 && mostrarCarroVacio();
+carritoCompras.length>0 && mostrarCarroConProductos();
+
+
+function mostrarCarroVacio(){
+    //Mostrar leyenda carro vacio y esconder metodos de pago
+   leyendaCarroVacio.classList.remove("productoEscondido");
+   metodosPagoCarroVacio.classList.add("productoEscondido");
+}
+function mostrarCarroConProductos(){
+    //Escoder leyenda carro vacio
+    leyendaCarroVacio.classList.add("productoEscondido");
+    metodosPagoCarroVacio.classList.remove("productoEscondido");
+    mostrarCarritoTabla();
+}
+
 function mostrarCarritoTabla(){
     let usuarioActivo=JSON.parse(sessionStorage.getItem("usuarioActivo"))
     let carritoCompras=usuarioActivo.carritoCompras;
-    let leyendaCarroVacio=document.getElementById("carritoVacio");
-    let metodosPagoCarroVacio=document.getElementById("metodosPagoCarroVacio");
-
-    if(carritoCompras!=null){
-        //Escoder leyenda carro vacio
-        leyendaCarroVacio.classList.add("productoEscondido");
-        metodosPagoCarroVacio.classList.remove("productoEscondido");
-
+    
+    if(carritoCompras.length>0){
         let tablaCarrito = document.createElement("table");
         tablaCarrito.className="table table-striped"
         let tTiulo=document.createElement("thead");
@@ -25,7 +38,6 @@ function mostrarCarritoTabla(){
         tablaCarrito.appendChild(tTiulo);
     
         let tBody = document.createElement("tBody");
-       // let precioCarrito=0;   
     
         for(const producto of carritoCompras){
             precioCarrito+=parseInt(producto.precio);
@@ -56,13 +68,9 @@ function mostrarCarritoTabla(){
     
         // carga tabla de importes en metodos de pago credito
         tablaCuotas();
-    } if(carritoCompras==null||carritoCompras.length==0){
-        //Mostrar leyenda carro vacio y esconder metodos de pago
-        leyendaCarroVacio.classList.remove("productoEscondido");
-        metodosPagoCarroVacio.classList.add("productoEscondido");
-
-    }
+    } 
 }
+
 
 function tablaCuotas(){
     let tablaCuotas = document.createElement("table");
@@ -81,13 +89,13 @@ function tablaCuotas(){
         let precioCarritoCuotas=precioCarrito;
         let tasaMensualInteres=0.05;   
 
-        for (let cuota=1; cuota<=12; cuota++){
+        for (let cantidadCuota=1; cantidadCuota<=12; cantidadCuota++){
             let filaCuota=document.createElement("tr");
-            let valorCuota=Math.round((precioCarritoCuotas*(1+tasaMensualInteres*cuota))/cuota);
+            let valorCuota=Math.round((precioCarritoCuotas*(1+tasaMensualInteres*cantidadCuota))/cantidadCuota);
             filaCuota.innerHTML=`
-                        <td>${cuota}</td>
+                        <td>${cantidadCuota}</td>
                         <td>$ ${valorCuota}</td>
-                        <td>$ ${valorCuota*cuota}</td>`;
+                        <td>$ ${valorCuota*cantidadCuota}</td>`;
                         tBodytablaCuotas.appendChild(filaCuota);
         }
         tablaCuotas.appendChild(tBodytablaCuotas);

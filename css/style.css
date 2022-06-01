@@ -10,25 +10,26 @@
     background-color: rgba(175, 175, 175, 0.1);
 }
 .contenedorNav{
-    width: 85%;
+    width: 80%;
 }
 .logoNavbar{
     max-width: 30px;
     margin-right: 5px;
 }
 .logoCarrito{
-    width: 5%;
+    width: 4%;
     margin: auto;
 }
 .logoUsuario{
-    width: 5%;
+    width: 6%;
     margin: auto;
 }
+
 .logoCarrito img{
-    max-width: 40px;
+    max-width: 35px;
 }
 .logoUsuario img{
-    max-width: 40px;
+    max-width: 45px;
 }
 
 .sliderInfo{

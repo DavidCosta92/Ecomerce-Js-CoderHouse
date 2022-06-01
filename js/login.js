@@ -21,4 +21,5 @@ function iniciarSession(){
     let usuarioRegistradoEnStorage= JSON.parse(localStorage.getItem(mailRegistrado.value));
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioRegistradoEnStorage));
     alert("LOGIN EXITOSO");
+    window.location="../index.html";  
 }

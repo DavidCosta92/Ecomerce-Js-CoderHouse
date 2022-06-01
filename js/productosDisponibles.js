@@ -156,16 +156,10 @@ class Producto{
     }
 }
 
-//CORROBORA SI EL CARRO FUE TIENE PRODUCTOS GUARDADOS EN EL STORAGE
-//EN CASO DE QUE NO, INICIA EL CARRO COMO VACIO;
-
-
 function obtenerCarrito(){
-    carritoCompras=usuarioActivo.carritoCompras;
-    //carritoCompras=usuarioActivo.carritoCompras||[];
+    carritoCompras=usuarioActivo?.carritoCompras; 
+    // si el usuario no esta logueado, sigue permitiendo la ejecucion, para mostrar productos
 }
-
-    
 
 function borrarDelCarrito(idProductoPorBorrar){
     let productoPorBorrar;
@@ -174,12 +168,12 @@ function borrarDelCarrito(idProductoPorBorrar){
             productoPorBorrar=producto;
         }
     }
-
-//saber el indice del producto a borrar dentro del array carritoCompras, luego lo elimino y actualizo el carro
+    //saber el indice del producto a borrar dentro del array carritoCompras, luego lo elimino y actualizo el carro
     let indexProductoPorBorrar= carritoCompras.findIndex(producto =>producto.idProducto==idProductoPorBorrar);
     let elementoBorrado= carritoCompras.splice(indexProductoPorBorrar,1);
-    sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
-    alert("Producto " +productoPorBorrar.nombre +" borrado del carrito correctamente")
+   // sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+   actualizarEstadoUsuarioSessionS(); 
+   alert("Producto " +productoPorBorrar.nombre +" borrado del carrito correctamente")
     location.reload()
 }
 function agregarOtraUnidadEnCarro(){
@@ -211,19 +205,21 @@ function agregarAlCarrito(idProductoPorAgregar){
     } 
 }
 */
-
 function agregarAlCarrito(idProductoPorAgregar){
     let productoPorAgregar;
     for(const producto of productosDisponibles){
         if(producto.idProducto==idProductoPorAgregar){
             productoPorAgregar=producto;
         }
-    }
-
-    
-    usuarioActivo.carritoCompras.push(productoPorAgregar);
+    }   
+    usuarioActivo?.carritoCompras.push(productoPorAgregar)? actualizarEstadoUsuarioSessionS() : pedirLogin();
+    usuarioActivo!=null && alert("Producto " +productoPorAgregar.nombre +" agregado al carrito correctamente");  
+}
+function actualizarEstadoUsuarioSessionS(){
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
-    alert("Producto " +productoPorAgregar.nombre +" agregado al carrito correctamente")
 }
 
-
+function pedirLogin(){
+   let loguear= confirm("Debes iniciar sesion para agregar productos al carrito");
+    loguear? location.href="./views/login.html" : alert("No se pudo agregar el producto al carrito");
+}

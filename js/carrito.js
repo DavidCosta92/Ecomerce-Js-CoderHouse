@@ -1,7 +1,8 @@
 let precioCarrito=0; 
 mostrarCarritoTabla();
 function mostrarCarritoTabla(){
-    let carritoCompras=JSON.parse(sessionStorage.getItem("carritoCompras"));
+    let usuarioActivo=JSON.parse(sessionStorage.getItem("usuarioActivo"))
+    let carritoCompras=usuarioActivo.carritoCompras;
     let leyendaCarroVacio=document.getElementById("carritoVacio");
     let metodosPagoCarroVacio=document.getElementById("metodosPagoCarroVacio");
 

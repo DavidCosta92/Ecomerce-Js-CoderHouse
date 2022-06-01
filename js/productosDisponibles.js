@@ -1,5 +1,6 @@
 // Funciones a llamar
-//CORROBORA SI EL CARRO FUE TIENE PRODUCTOS GUARDADOS EN EL STORAGE
+//Busca un usuario activo, y luego obtiene el carrito de compras
+let usuarioActivo=JSON.parse(sessionStorage.getItem("usuarioActivo"))
 let carritoCompras;
 obtenerCarrito();
 // base de productos en forma de array
@@ -157,8 +158,11 @@ class Producto{
 
 //CORROBORA SI EL CARRO FUE TIENE PRODUCTOS GUARDADOS EN EL STORAGE
 //EN CASO DE QUE NO, INICIA EL CARRO COMO VACIO;
+
+
 function obtenerCarrito(){
-    carritoCompras=JSON.parse(sessionStorage.getItem("carritoCompras"))||[];
+    carritoCompras=usuarioActivo.carritoCompras;
+    //carritoCompras=usuarioActivo.carritoCompras||[];
 }
 
     
@@ -174,7 +178,7 @@ function borrarDelCarrito(idProductoPorBorrar){
 //saber el indice del producto a borrar dentro del array carritoCompras, luego lo elimino y actualizo el carro
     let indexProductoPorBorrar= carritoCompras.findIndex(producto =>producto.idProducto==idProductoPorBorrar);
     let elementoBorrado= carritoCompras.splice(indexProductoPorBorrar,1);
-    sessionStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
+    sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
     alert("Producto " +productoPorBorrar.nombre +" borrado del carrito correctamente")
     location.reload()
 }
@@ -215,8 +219,10 @@ function agregarAlCarrito(idProductoPorAgregar){
             productoPorAgregar=producto;
         }
     }
-    carritoCompras.push(productoPorAgregar);
-    sessionStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
+
+    
+    usuarioActivo.carritoCompras.push(productoPorAgregar);
+    sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
     alert("Producto " +productoPorAgregar.nombre +" agregado al carrito correctamente")
 }
 

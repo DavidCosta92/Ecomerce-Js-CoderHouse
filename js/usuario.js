@@ -5,8 +5,7 @@ class Usuario{
         this.apellido=apellido;
         this.mail=mail;
         this.contraseña=contraseña;
-        let carritoCompras;
-        
+        this.carritoCompras=[];
         this.precioCarrito=0;
         const pagoEfectivo=0.8;
         const pagoDebito=1;
@@ -50,7 +49,7 @@ function validarFormulario(evento){
         alert("todos los campos son obligatorios!")
     }else{
         u= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value);
-        sessionStorage.setItem(campoMail.value, JSON.stringify(u));
+        localStorage.setItem(campoMail.value, JSON.stringify(u));
         alert("¡Usuario creado correctamente! \n Bienvenido "+u.nombre)
         window.location="../index.html";  
     }

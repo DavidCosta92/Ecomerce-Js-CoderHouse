@@ -1,5 +1,5 @@
 
-// formulario login
+// formulario login, obtieene los datos del usuario guardado en el local y los guarda en el session como usuario activo
 
 formularioLogin.addEventListener("submit",login);
 let mailRegistrado =document.getElementById("mailRegistrado");
@@ -8,15 +8,17 @@ let contraseñaRegistrada =document.getElementById("contraseñaRegistrada");
 
 function login(evento){
     evento.preventDefault();
-    let usuarioRegistrado= JSON.parse(sessionStorage.getItem(mailRegistrado.value));
+    let usuarioRegistrado= JSON.parse(localStorage.getItem(mailRegistrado.value));
+
     if(usuarioRegistrado){
-        if(usuarioRegistrado.contraseña==contraseñaRegistrada.value){
-            alert("LOGIN EXITOSO")
-            
-        }else{
-            alert("CONTRASEÑA ERRONEA")
-        }
+        usuarioRegistrado.contraseña==contraseñaRegistrada.value? iniciarSession():alert("CONTRASEÑA ERRONEA")
     } else{
         alert("ERROR: REVISE MAIL Y CONTRASEÑA")
     }
+}
+
+function iniciarSession(){
+    let usuarioRegistradoEnStorage= JSON.parse(localStorage.getItem(mailRegistrado.value));
+    sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioRegistradoEnStorage));
+    alert("LOGIN EXITOSO");
 }

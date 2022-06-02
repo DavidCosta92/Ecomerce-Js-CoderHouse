@@ -20,6 +20,31 @@ function login(evento){
 function iniciarSession(){
     let usuarioRegistradoEnStorage= JSON.parse(localStorage.getItem(mailRegistrado.value));
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioRegistradoEnStorage));
-    alert("LOGIN EXITOSO");
-    window.location="../index.html";  
+    alertaLoginExitoso();
+}
+
+
+function alertaLoginExitoso(){
+    let timerInterval
+    Swal.fire({
+    title: 'Login Exitoso',
+    html: 'I will close in <b></b> milliseconds.',
+    timer: 800,
+    timerProgressBar: true,
+    didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+        b.textContent = Swal.getTimerLeft()
+        }, 100)
+    },
+    willClose: () => {
+        clearInterval(timerInterval)
+    }
+    }).then((result) => {
+    /* Read more about handling dismissals below */
+    if (result.dismiss === Swal.DismissReason.timer) {
+        window.location="../index.html";
+    }
+    })
 }

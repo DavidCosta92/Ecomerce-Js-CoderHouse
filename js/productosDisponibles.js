@@ -173,11 +173,6 @@ function confirmacionBorrarDelCarro(idProductoPorBorrar){
       }).then((result) => {
         if (result.isConfirmed) {
             borrarDelCarrito(idProductoPorBorrar);
-            Swal.fire(
-                '¡Eliminado!',
-                'Producto borrado del carrito',
-                'success'
-            )
         }
       })
 }
@@ -193,9 +188,10 @@ function borrarDelCarrito(idProductoPorBorrar){
     //saber el indice del producto a borrar dentro del array carritoCompras, luego lo elimino y actualizo el carro
     let indexProductoPorBorrar= carritoCompras.findIndex(producto =>producto.idProducto==idProductoPorBorrar);
     let elementoBorrado= carritoCompras.splice(indexProductoPorBorrar,1);
-   // sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
-   actualizarEstadoUsuarioSessionS(); 
-    location.reload()
+   
+    actualizarEstadoUsuarioSessionS(); 
+    toastBorradoCarro(elementoBorrado);
+    location.reload();   /////// =====>>>> deberia poner metodo de borrado de elemento! <<<<===== //////
 }
 function agregarOtraUnidadEnCarro(){
     unidadesEnCarro++;
@@ -234,13 +230,7 @@ function agregarAlCarrito(idProductoPorAgregar){
         }
     }   
     usuarioActivo?.carritoCompras.push(productoPorAgregar)? actualizarEstadoUsuarioSessionS() : pedirLogin();
-    usuarioActivo!=null && Swal.fire({
-        position: 'botton-end',
-        icon: 'success',
-        title: `${productoPorAgregar.tipo} ${productoPorAgregar.nombre} ¡Agregado al carrito!`,
-        showConfirmButton: false,
-        timer: 1500
-    });  
+    usuarioActivo!=null && toastAgregarCarro(productoPorAgregar);
 }
 function actualizarEstadoUsuarioSessionS(){
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
@@ -249,4 +239,37 @@ function actualizarEstadoUsuarioSessionS(){
 function pedirLogin(){
    let loguear= confirm("Debes iniciar sesion para agregar productos al carrito");
     loguear? location.href="./views/login.html" : alert("No se pudo agregar el producto al carrito");
+}
+
+function toastAgregarCarro(productoPorAgregar){
+    Toastify({
+        text: `${productoPorAgregar.tipo} ${productoPorAgregar.nombre} ¡Agregado al carrito!`,
+        duration: 5000,
+        destination: "views/carrito.html",
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "rgba(60, 60, 167,0.9)",
+        },
+      }).showToast();
+}
+
+function toastBorradoCarro(elementoBorrado){
+    Toastify({
+        text: `${elementoBorrado.tipo} ${elementoBorrado.nombre} ¡Ha sido borrado del carrito!`,
+        duration: 5000,
+        destination: "carrito.html",
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "rgba(255, 0, 13, 0.8);",
+        },
+      }).showToast();
+
 }

@@ -75,6 +75,8 @@ let catSmartTV = document.getElementById("catSmartTV");
 let catAuto = document.getElementById("catAutos");
 let catCamioneta = document.getElementById("catCamionetas");
 
+
+/////// =====>>>> deberia usar metodos de borrado de elemento! para que desaparezcan las categorias <<<<===== //////
 catCelular.onclick=()=>(mostrarCategoria("Celular"));
 catComputadora.onclick=()=>(mostrarCategoria("Computadora"));
 catSmartTV.onclick=()=>(mostrarCategoria("SmartTV"));

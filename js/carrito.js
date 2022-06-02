@@ -26,6 +26,7 @@ function mostrarCarritoTabla(){
     if(carritoCompras.length>0){
         let tablaCarrito = document.createElement("table");
         tablaCarrito.className="table table-striped"
+        tablaCarrito.id="tablaCarrito";
         let tTiulo=document.createElement("thead");
         let filaTitulo=document.createElement("tr");
     
@@ -42,6 +43,7 @@ function mostrarCarritoTabla(){
         for(const producto of carritoCompras){
             precioCarrito+=parseInt(producto.precio);
             let fila=document.createElement("tr");
+            fila.id=producto.idProducto;
             fila.innerHTML=`
                         <td>${producto.idProducto}</td>
                         <td>${producto.tipo} ${producto.nombre}</td>

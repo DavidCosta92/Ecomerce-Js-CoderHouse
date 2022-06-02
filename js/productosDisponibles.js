@@ -188,15 +188,16 @@ function borrarDelCarrito(idProductoPorBorrar){
     //saber el indice del producto a borrar dentro del array carritoCompras, luego lo elimino y actualizo el carro
     let indexProductoPorBorrar= carritoCompras.findIndex(producto =>producto.idProducto==idProductoPorBorrar);
     let elementoBorrado= carritoCompras.splice(indexProductoPorBorrar,1);
-   
+    
     actualizarEstadoUsuarioSessionS(); 
-    toastBorradoCarro(elementoBorrado);
+    toastBorradoCarro(elementoBorrado); /////// =====>>>> AUN NO se muestra porque estoy recargando pagina.. <<<<===== //////
     location.reload();   /////// =====>>>> deberia poner metodo de borrado de elemento! <<<<===== //////
 }
 function agregarOtraUnidadEnCarro(){
     unidadesEnCarro++;
 }
 /* POR TERMINAR
+estoy cargando un id de producto como id de tabla.. usar eso para corroborar
 function agregarAlCarrito(idProductoPorAgregar){
     let productoPorAgregar;
     console.log(" mande el id "+idProductoPorAgregar+" para agregar al carro")

@@ -46,7 +46,7 @@ function mostrarCarritoTabla(){
                         <td>${producto.idProducto}</td>
                         <td>${producto.tipo} ${producto.nombre}</td>
                         <td>$ ${+producto.precio}</td>
-                        <td><button id="agregar${producto.idProducto}" type="button" onclick="borrarDelCarrito(${producto.idProducto})" class="btn btn-danger"> borrar </button></td>`;
+                        <td><button id="agregar${producto.idProducto}" type="button" onclick="confirmacionBorrarDelCarro(${producto.idProducto})" class="btn btn-danger"> borrar </button></td>`;
                         tBody.appendChild(fila);
         }
        

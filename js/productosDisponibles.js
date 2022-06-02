@@ -161,6 +161,27 @@ function obtenerCarrito(){
     // si el usuario no esta logueado, sigue permitiendo la ejecucion, para mostrar productos
 }
 
+
+function confirmacionBorrarDelCarro(idProductoPorBorrar){
+    Swal.fire({
+        title: '¿Estas seguro?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            borrarDelCarrito(idProductoPorBorrar);
+            Swal.fire(
+                '¡Eliminado!',
+                'Producto borrado del carrito',
+                'success'
+            )
+        }
+      })
+}
+
 function borrarDelCarrito(idProductoPorBorrar){
     let productoPorBorrar;
     for(const producto of productosDisponibles){
@@ -168,12 +189,12 @@ function borrarDelCarrito(idProductoPorBorrar){
             productoPorBorrar=producto;
         }
     }
+
     //saber el indice del producto a borrar dentro del array carritoCompras, luego lo elimino y actualizo el carro
     let indexProductoPorBorrar= carritoCompras.findIndex(producto =>producto.idProducto==idProductoPorBorrar);
     let elementoBorrado= carritoCompras.splice(indexProductoPorBorrar,1);
    // sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
    actualizarEstadoUsuarioSessionS(); 
-   alert("Producto " +productoPorBorrar.nombre +" borrado del carrito correctamente")
     location.reload()
 }
 function agregarOtraUnidadEnCarro(){
@@ -213,7 +234,13 @@ function agregarAlCarrito(idProductoPorAgregar){
         }
     }   
     usuarioActivo?.carritoCompras.push(productoPorAgregar)? actualizarEstadoUsuarioSessionS() : pedirLogin();
-    usuarioActivo!=null && alert("Producto " +productoPorAgregar.nombre +" agregado al carrito correctamente");  
+    usuarioActivo!=null && Swal.fire({
+        position: 'botton-end',
+        icon: 'success',
+        title: `${productoPorAgregar.tipo} ${productoPorAgregar.nombre} ¡Agregado al carrito!`,
+        showConfirmButton: false,
+        timer: 1500
+    });  
 }
 function actualizarEstadoUsuarioSessionS(){
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));

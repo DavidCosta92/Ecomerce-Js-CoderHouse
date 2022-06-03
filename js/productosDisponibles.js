@@ -232,7 +232,15 @@ function agregarAlCarrito(idProductoPorAgregar){
     }   
     usuarioActivo?.carritoCompras.push(productoPorAgregar)? actualizarEstadoUsuarioSessionS() : pedirLogin();
     usuarioActivo!=null && toastAgregarCarro(productoPorAgregar);
+    usuarioActivo!=null && modificarBotonAgregar(idProductoPorAgregar);
 }
+
+function modificarBotonAgregar(idProductoPorAgregar){
+    let botonAgregarPorCambiar=document.getElementById("agregar"+idProductoPorAgregar);
+    botonAgregarPorCambiar.style.backgroundColor="rgba(60, 60, 167,0.9)";
+    botonAgregarPorCambiar.innerHTML="En carrito";
+}
+
 function actualizarEstadoUsuarioSessionS(){
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
 }

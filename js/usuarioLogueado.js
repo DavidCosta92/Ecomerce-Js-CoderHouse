@@ -1,10 +1,10 @@
 // chequeo de usuario logueado
-let logoUsuario=document.getElementById("logoUsuario");
+let nombreUsarioActivo=document.getElementById("nombreUsarioActivo");
 let usuarioRegistrado=sessionStorage.getItem("usuarioActivo");
 if(usuarioRegistrado){
-   // logoUsuario.style.display.none;
-    logoUsuario.style.fontSize="1.1rem";
-    logoUsuario.style.fontWeight=900;
+    nombreUsarioActivo.style.fontSize="1.4rem";
+    nombreUsarioActivo.style.fontWeight=800;
+    nombreUsarioActivo.style.color="purple";
     let nombreUsuario=JSON.parse(usuarioRegistrado).nombre
-    logoUsuario.innerHTML=`Usuario ${nombreUsuario.toUpperCase()}`;
+    nombreUsarioActivo.innerHTML=`${nombreUsuario.toUpperCase()}`;
 }

@@ -167,8 +167,8 @@ function confirmacionBorrarDelCarro(idProductoPorBorrar){
         title: '¿Estas seguro?',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: 'rgba(60, 60, 167,0.9)', 
         confirmButtonText: 'Si, eliminar!'
       }).then((result) => {
         if (result.isConfirmed) {
@@ -238,9 +238,37 @@ function actualizarEstadoUsuarioSessionS(){
 }
 
 function pedirLogin(){
-   let loguear= confirm("Debes iniciar sesion para agregar productos al carrito");
-    loguear? location.href="./views/login.html" : alert("No se pudo agregar el producto al carrito");
+    vex.dialog.prompt({
+        message: 'Por favor coloca Usuario y contraseña para continuar',
+        placeholder: 'Usuario',
+        callback: function (usuarioIngresado) {
+            if(usuarioIngresado==""){
+                alert("Por favor coloca un usuario valido");
+            } else {
+                let usuarioRegistradoEnStorage= JSON.parse(localStorage.getItem(usuarioIngresado));
+                if(usuarioRegistradoEnStorage){
+                    //pedir contraseña
+                    vex.dialog.prompt({
+                    message: 'Por favor contraseña',
+                    placeholder: 'Contraseña',
+                    callback: function (value) {
+                        if(value==usuarioRegistradoEnStorage.contraseña){
+                        // si contraseña correcta, loguear y actualizar
+                            alertaLoginExitoso();
+                            sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioRegistradoEnStorage));
+                            
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    })
 }
+
+
+
+
 
 function toastAgregarCarro(productoPorAgregar){
     Toastify({
@@ -273,4 +301,28 @@ function toastBorradoCarro(elementoBorrado){
         },
       }).showToast();
 
+}
+
+function alertaLoginExitoso(){
+    let timerInterval
+    Swal.fire({
+    title: 'Login Exitoso',
+    html: '',
+    timer: 800,
+    timerProgressBar: true,
+    didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+        b.textContent = Swal.getTimerLeft()
+        }, 100)
+    },
+    willClose: () => {
+        clearInterval(timerInterval)
+    }
+    }).then((result) => {
+    if (result.dismiss === Swal.DismissReason.timer) {
+        window.location="./index.html";
+    }
+    })
 }

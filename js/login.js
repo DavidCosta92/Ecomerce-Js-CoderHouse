@@ -28,7 +28,7 @@ function alertaLoginExitoso(){
     let timerInterval
     Swal.fire({
     title: 'Login Exitoso',
-    html: 'I will close in <b></b> milliseconds.',
+    html: '',
     timer: 800,
     timerProgressBar: true,
     didOpen: () => {
@@ -42,7 +42,6 @@ function alertaLoginExitoso(){
         clearInterval(timerInterval)
     }
     }).then((result) => {
-    /* Read more about handling dismissals below */
     if (result.dismiss === Swal.DismissReason.timer) {
         window.location="../index.html";
     }

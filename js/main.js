@@ -82,3 +82,4 @@ catComputadora.onclick=()=>(mostrarCategoria("Computadora"));
 catSmartTV.onclick=()=>(mostrarCategoria("SmartTV"));
 catAuto.onclick=()=>(mostrarCategoria("Auto"));
 catCamioneta.onclick=()=>(mostrarCategoria("Camioneta"));
+

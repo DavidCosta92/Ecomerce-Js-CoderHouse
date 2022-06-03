@@ -147,6 +147,14 @@
     width: 75%;
 }
 
+.botonFinalizarCompra{
+    margin-bottom: 20px;
+}
+.botonFinalizarCompra .btn{
+    width: 50%;
+    margin-left: 25%;
+
+}
 
 /* LOGIN */
 .formularioLogin{

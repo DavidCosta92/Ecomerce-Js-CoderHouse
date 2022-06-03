@@ -1,6 +1,8 @@
 let precioCarrito=0; 
 let leyendaCarroVacio=document.getElementById("carritoVacio");
 let metodosPagoCarroVacio=document.getElementById("metodosPagoCarroVacio");
+let botonFinalizarCompraEfectivo=document.getElementById("botonFinalizarCompraEfectivo");
+let botonFinalizarCompraCredito=document.getElementById("botonFinalizarCompraCredito");
 
 
 carritoCompras.length==0 && mostrarCarroVacio();
@@ -11,6 +13,8 @@ function mostrarCarroVacio(){
     //Mostrar leyenda carro vacio y esconder metodos de pago
    leyendaCarroVacio.classList.remove("productoEscondido");
    metodosPagoCarroVacio.classList.add("productoEscondido");
+   botonFinalizarCompraEfectivo.classList.add("productoEscondido");
+   botonFinalizarCompraCredito.classList.add("productoEscondido");
 }
 function mostrarCarroConProductos(){
     //Escoder leyenda carro vacio
@@ -103,4 +107,21 @@ function tablaCuotas(){
         tablaCuotas.appendChild(tBodytablaCuotas);
         let dondeVaTablaCuotas =document.getElementById("importePagoCredito");
         dondeVaTablaCuotas.appendChild(tablaCuotas);
+}
+
+
+function finalizarCompra(){
+    Swal.fire({
+        title: 'Excelente',
+        text: "Seras redirigido a la pagina de pago, hasta pronto!",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: 'green',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sii!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href="https://www.mercadopago.com.ar";
+        }
+      })
 }

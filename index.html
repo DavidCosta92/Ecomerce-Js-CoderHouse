@@ -34,7 +34,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                                                  
                     <li><a id="catCelular" class="dropdown-item " href="./views/CatCelulares.html">Celulares</a></li>
-                    <li><a id="catComputadoras" class="dropdown-item active" href="./views/CatComputadoras.html">Computadoras</a></li>
+                    <li><a id="catComputadoras" class="dropdown-item" href="./views/CatComputadoras.html">Computadoras</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a id="catSmartTV" class="dropdown-item" href="./views/CatSmartTVs.html">Smart TVs</a></li>
                     <li><hr class="dropdown-divider"></li>
@@ -133,9 +133,12 @@
     
     
     <!-- JS PROPIOS  -->
+    <script src="./js/productos.js"></script>
     <script src="./js/productosDisponibles.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/usuarioLogueado.js"></script>
-    <script>cargarProductosDeArrayACards(productosDisponibles);</script>
+     <!-- <script>cargarProductosDeArrayACards(obtenerProductosAPI());</script>  -->
+     <script>cargarProductosDeArrayACards(productosDisponibles);</script>
+     
 </body>
 </html>

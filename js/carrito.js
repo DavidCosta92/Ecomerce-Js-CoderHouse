@@ -1,4 +1,4 @@
-let precioCarrito=0; 
+let precioCarrito; 
 let leyendaCarroVacio=document.getElementById("carritoVacio");
 let metodosPagoCarroVacio=document.getElementById("metodosPagoCarroVacio");
 let botonFinalizarCompraEfectivo=document.getElementById("botonFinalizarCompraEfectivo");
@@ -8,6 +8,23 @@ let botonFinalizarCompraCredito=document.getElementById("botonFinalizarCompraCre
 carritoCompras.length==0 && mostrarCarroVacio();
 carritoCompras.length>0 && mostrarCarroConProductos();
 
+function calcularPrecioCarrito(){
+    precioCarrito=0;
+    for (const prod of carritoCompras){
+        precioCarrito+=(prod.precio*prod.cantidad);  
+    }
+    return precioCarrito;
+}
+
+function actualizarDatosCarrito(){
+    let precio=calcularPrecioCarrito();
+     //actualiza todos los items que utilizan precio carrito
+     document.getElementById("sumaTotalCarrito").innerHTML=`$ ${precio}`;
+     let valorEfectivo = document.getElementById("importePagoEfectivo");
+     valorEfectivo.innerHTML=`El precio del carrito pagando en efectivo es de $ ${calcularPrecioCarrito()*0.8}`
+     document.getElementById("importePagoCredito").innerHTML="";
+     tablaCuotas();
+}
 
 function mostrarCarroVacio(){
     //Mostrar leyenda carro vacio y esconder metodos de pago
@@ -35,22 +52,23 @@ function mostrarCarritoTabla(){
         let filaTitulo=document.createElement("tr");
     
         filaTitulo.innerHTML=`
-        <th>ID Producto</th>
-        <th>Nombre Producto</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
         <th>Precio</th>
         <th>Acciones</th>`;
         tTiulo.appendChild(filaTitulo);
         tablaCarrito.appendChild(tTiulo);
     
         let tBody = document.createElement("tBody");
+        tBody.id="tBodyCarrito";
     
         for(const producto of carritoCompras){
             precioCarrito+=parseInt(producto.precio);
             let fila=document.createElement("tr");
-            fila.id=producto.idProducto;
+            fila.id=`fila${producto.idProducto}`;
             fila.innerHTML=`
-                        <td>${producto.idProducto}</td>
                         <td>${producto.tipo} ${producto.nombre}</td>
+                        <td>${producto.cantidad}</td>
                         <td>$ ${+producto.precio}</td>
                         <td><button id="agregar${producto.idProducto}" type="button" onclick="confirmacionBorrarDelCarro(${producto.idProducto})" class="btn btn-danger"> borrar </button></td>`;
                         tBody.appendChild(fila);
@@ -59,7 +77,7 @@ function mostrarCarritoTabla(){
             let ultimaFila=document.createElement("tr");
             ultimaFila.innerHTML=`
                         <td colspan="2" class="sumaTablaPrecio">PRECIO TOTAL</td>
-                        <td colspan="2" class="sumaTabla">$ ${+precioCarrito}</td>`;
+                        <td colspan="2" class="sumaTabla" id="sumaTotalCarrito">$ ${calcularPrecioCarrito()}</td>`;
                         tBody.appendChild(ultimaFila);
     
         tablaCarrito.appendChild(tBody);
@@ -68,7 +86,7 @@ function mostrarCarritoTabla(){
 
         // carga de importes en metodos de pago efectivo
         let valorEfectivo = document.getElementById("importePagoEfectivo");
-        valorEfectivo.innerHTML=`El precio del carrito pagando en efectivo es de $ ${+precioCarrito*0.8}`
+        valorEfectivo.innerHTML=`El precio del carrito pagando en efectivo es de $ ${calcularPrecioCarrito()*0.8}`
         let textoPagoEfectivo=document.getElementById("multiCollapseExample1");
         textoPagoEfectivo.appendChild(valorEfectivo);
     
@@ -92,7 +110,7 @@ function tablaCuotas(){
         tablaCuotas.appendChild(tTiulotablaCuotas);
     
         let tBodytablaCuotas = document.createElement("tBody");
-        let precioCarritoCuotas=precioCarrito;
+        let precioCarritoCuotas=calcularPrecioCarrito();
         let tasaMensualInteres=0.05;   
 
         for (let cantidadCuota=1; cantidadCuota<=12; cantidadCuota++){

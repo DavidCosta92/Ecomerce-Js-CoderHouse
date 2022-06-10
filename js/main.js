@@ -1,4 +1,5 @@
-//PRODUCTOS
+
+
 //Obtener productos desde array
 function ArrayProductosParaViews(array){
     for(const producto of array){
@@ -42,14 +43,8 @@ function cargarProductosDeArrayACards(array){
 }
 
 function mostrarCategoria(categoria){
-    let todosLosProductos=document.getElementsByClassName("card text-center")
-    let categoriaCorrecta= document.getElementsByClassName(categoria);
-    for(const producto of todosLosProductos){
-       producto.classList.add("productoEscondido");
-    }
-    for(const producto of categoriaCorrecta){
-        producto.classList.remove("productoEscondido");
-    }
+    document.getElementById("cardsDeProductos").innerHTML="";
+    cargarProductosDeArrayACards(arrayTipos(productosDisponibles,categoria));
 }
 
 // buscar con nav.. 

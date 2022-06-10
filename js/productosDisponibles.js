@@ -62,20 +62,58 @@ function borrarDelCarrito(idProductoPorBorrar){
             productoPorBorrar=producto;
         }
     }
-
     let indexProductoPorBorrar= carritoCompras.findIndex(producto =>producto.idProducto==idProductoPorBorrar);
     let elementoBorrado= carritoCompras.splice(indexProductoPorBorrar,1);
-    
     actualizarEstadoUsuarioSessionS(); 
     toastBorradoCarro(elementoBorrado); 
     let filaABorrar= document.getElementById(`fila${idProductoPorBorrar}`);
     document.getElementById("tBodyCarrito").removeChild(filaABorrar);
     actualizarDatosCarrito();
+}
+function agregarNuevoProducto(id){
+    let productoPorAgregar;
+    for(const producto of productosDisponibles){
+        if(producto.idProducto==id){
+            productoPorAgregar=producto;
+        }
+    }
+    usuarioActivo.carritoCompras.push(productoPorAgregar)
+    actualizarEstadoUsuarioSessionS()
+    toastAgregarCarro(productoPorAgregar);
+    modificarBotonAgregar(id);
+}
+
+function agregarOtraUnidadAlCarro(id){
+    for(const producto of usuarioActivo.carritoCompras){
+        if(producto.idProducto==id){
+            producto.cantidad++;
+            actualizarEstadoUsuarioSessionS();
+            document.getElementById("cantidadProducto"+id).innerHTML=producto.cantidad;
+            document.getElementById("precioTotal"+id).innerHTML=producto.cantidad*producto.precio;
+            actualizarDatosCarrito();
+            
+        }
+    }
+}
+
+function quitarUnaUnidadDelCarro(id){
+    for(const producto of usuarioActivo.carritoCompras){
+        if(producto.idProducto==id){
+            if(producto.cantidad>1){
+                producto.cantidad--;
+                document.getElementById("cantidadProducto"+id).innerHTML=producto.cantidad;
+                document.getElementById("precioTotal"+id).innerHTML=producto.cantidad*producto.precio;
+                actualizarEstadoUsuarioSessionS();
+                actualizarDatosCarrito();
+            } if(producto.cantidad==1){
+                confirmacionBorrarDelCarro(id);
+            }
+        }
+    }
 
 }
 
 function agregarAlCarrito(idProductoPorAgregar){
-    let productoPorAgregar;
     if(usuarioActivo){
         let productoEnCarro;
         for(const producto of usuarioActivo.carritoCompras){
@@ -85,25 +123,12 @@ function agregarAlCarrito(idProductoPorAgregar){
                 productoEnCarro=false;
             }
         }
-
-
         if(!productoEnCarro){
-            for(const producto of productosDisponibles){
-                if(producto.idProducto==idProductoPorAgregar){
-                    productoPorAgregar=producto;
-                }
-            }
-            usuarioActivo.carritoCompras.push(productoPorAgregar)
-            actualizarEstadoUsuarioSessionS()
-            toastAgregarCarro(productoPorAgregar);
-            modificarBotonAgregar(idProductoPorAgregar);
+            agregarNuevoProducto(idProductoPorAgregar);
+
         }else if(productoEnCarro){
-            for(const producto of usuarioActivo.carritoCompras){
-                if(producto.idProducto==idProductoPorAgregar){
-                    producto.cantidad++;
-                    actualizarEstadoUsuarioSessionS();
-                }
-            }
+            agregarOtraUnidadAlCarro(idProductoPorAgregar);
+
         }
     } else {
         pedirLogin();

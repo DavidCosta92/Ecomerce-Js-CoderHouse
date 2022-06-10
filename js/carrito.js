@@ -54,7 +54,8 @@ function mostrarCarritoTabla(){
         filaTitulo.innerHTML=`
         <th>Producto</th>
         <th>Cantidad</th>
-        <th>Precio</th>
+        <th>Precio Un</th>
+        <th>Precio Total</th>
         <th>Acciones</th>`;
         tTiulo.appendChild(filaTitulo);
         tablaCarrito.appendChild(tTiulo);
@@ -68,9 +69,15 @@ function mostrarCarritoTabla(){
             fila.id=`fila${producto.idProducto}`;
             fila.innerHTML=`
                         <td>${producto.tipo} ${producto.nombre}</td>
-                        <td>${producto.cantidad}</td>
+                        <td id="cantidadProducto${producto.idProducto}">${producto.cantidad}</td>
                         <td>$ ${+producto.precio}</td>
-                        <td><button id="agregar${producto.idProducto}" type="button" onclick="confirmacionBorrarDelCarro(${producto.idProducto})" class="btn btn-danger"> borrar </button></td>`;
+                        <td id="precioTotal${producto.idProducto}">$ ${+producto.precio*producto.cantidad}</td>
+                        <td>
+                            <button id="" type="button" onclick="agregarOtraUnidadAlCarro(${producto.idProducto})" class="btn btn-success"> + 1 </button>
+                            <button id="" type="button" onclick="quitarUnaUnidadDelCarro(${producto.idProducto})" class="btn btn-warning"> - 1 </button>
+                            <button id="" type="button" onclick="confirmacionBorrarDelCarro(${producto.idProducto})" class="btn btn-danger"> Eliminar </button>
+
+                        </td>`;
                         tBody.appendChild(fila);
         }
        

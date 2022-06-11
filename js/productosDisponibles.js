@@ -1,26 +1,25 @@
-// Funciones a llamar
 //Busca un usuario activo, y luego obtiene el carrito de compras
 let usuarioActivo=JSON.parse(sessionStorage.getItem("usuarioActivo"))
 let carritoCompras;
-
-obtenerCarrito();
-// base de productos en forma de array
-/*function obtenerProductosAPI(){
-    const URLGET="productos.json"
-    fetch(URLGET,{
-        mode: 'no-cors'
-    })
-        .then((resultado) => resultado.json())
-        .then((info)=>{
-            productosDisponibles=info;
-            console.log(productosDisponibles);
-        })
-        
-    return productosDisponibles;
-}
+let productosDisponibles=[];
 
 obtenerProductosAPI();
-*/
+obtenerCarrito();
+
+
+// Obtener productos desde archivo JSON local
+function obtenerProductosAPI(){
+    const URLGET="js/productos.json"
+    fetch(URLGET)
+        .then((resultado) => resultado.json())
+        .then((info)=>{
+            productosDisponibles=info.productosDisponibles;
+            cargarProductosDeArrayACards(productosDisponibles)
+        })    
+}
+
+
+
 // aplicar a futuro, para SUBIR PRODUCTOS DESDE LA PAGINA DE CARGA de productos en vez de array...
 class Producto{
     constructor(tipo,nombre,precio,caracteristicas,img,idProducto){
@@ -34,9 +33,11 @@ class Producto{
     }
 }
 
+
+
+// si el usuario no esta logueado, sigue permitiendo la ejecucion, para mostrar productos
 function obtenerCarrito(){
     carritoCompras=usuarioActivo?.carritoCompras; 
-    // si el usuario no esta logueado, sigue permitiendo la ejecucion, para mostrar productos
 }
 
 

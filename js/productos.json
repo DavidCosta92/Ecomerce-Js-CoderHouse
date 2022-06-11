@@ -6,7 +6,8 @@
             "precio":"20000",
             "caracteristicas": "4gb ram, 256gb sdd, 12 pulgadas",
             "img": "./img/Producto/note-bgh/note-bgh-1.png",
-            "idProducto":1
+            "idProducto":1,
+            "cantidad":1
         },
         {
             "tipo":"Notebook",
@@ -14,7 +15,8 @@
             "precio":"30000",
             "caracteristicas": "8gb ram, 1tb sdd, 14 pulgadas",
             "img": "./img/Producto/note-bgh/note-bgh-1.png",
-            "idProducto":2 
+            "idProducto":2,
+            "cantidad":1 
         },
         {
             "tipo":"Notebook",
@@ -22,7 +24,8 @@
             "precio":"4000",
             "caracteristicas": "4gb ram, \n512gb sdd, \n17.1 pulgadas",
             "img": "./img/Producto/note-bgh/note-bgh-1.png",
-            "idProducto":3
+            "idProducto":3,
+            "cantidad":1
         },
         {
             "tipo":"SmartTV",
@@ -30,7 +33,8 @@
             "precio":"35000",
             "caracteristicas": "40 pulgadas, Hdmi, 4K",
             "img": "./img/Producto/smart-32/smartTv32.webp",
-            "idProducto":4
+            "idProducto":4,
+            "cantidad":1
         },
         {
             "tipo":"SmartTV",
@@ -38,7 +42,8 @@
             "precio":"130000",
             "caracteristicas": "70 pulgadas, Hdmi, 8K",
             "img": "./img/Producto/smart-32/smartTv32c.webp",
-            "idProducto":5
+            "idProducto":5,
+            "cantidad":1
         },
         {
             "tipo":"SmartTV",
@@ -46,7 +51,8 @@
             "precio":"40000",
             "caracteristicas": "27 pulgadas, FullHd",
             "img": "./img/Producto/smart-32/smartTv32a.webp",
-            "idProducto":6
+            "idProducto":6,
+            "cantidad":1
         },
         {
             "tipo":"SmartTV",
@@ -54,7 +60,8 @@
             "precio":"40000",
             "caracteristicas": "27 pulgadas, FullHd",
             "img": "./img/Producto/smart-32/smartTv32d.webp",
-            "idProducto":20
+            "idProducto":20,
+            "cantidad":1
         },
         {
             "tipo":"Celular",
@@ -62,7 +69,8 @@
             "precio":"20000",
             "caracteristicas": "4gb ram, 256gb rom, 5,7 pulgadas",
             "img": "./img/Producto/celular/cel1.png",
-            "idProducto":7
+            "idProducto":7,
+            "cantidad":1
         },
         
         {
@@ -71,7 +79,8 @@
             "precio":"30000",
             "caracteristicas": "8gb ram, cuadruple camara, 5,2 pulgadas",
             "img": "./img/Producto/celular/cel2.png",
-            "idProducto":8
+            "idProducto":8,
+            "cantidad":1
         },
         {
             "tipo":"Celular",
@@ -79,7 +88,8 @@
             "precio":"4000",
             "caracteristicas": "4gb ram, \n512gb sdd, \n17.1 pulgadas",
             "img": "./img/Producto/celular/cel4.png",
-            "idProducto":9
+            "idProducto":9,
+            "cantidad":1
         },
         {
             "tipo":"Celular",
@@ -87,7 +97,8 @@
             "precio":"4000",
             "caracteristicas": "12gb ram, cuadruple camara, 5,2 pulgadas",
             "img": "./img/Producto/celular/cel3.png",
-            "idProducto":30
+            "idProducto":30,
+            "cantidad":1
         },
         {
             "tipo":"Auto",
@@ -95,7 +106,8 @@
             "precio":"3500000",
             "caracteristicas": "Modelo 2022, 1.8, 0km",
             "img": "./img/Producto/auto/auto1.png",
-            "idProducto":10
+            "idProducto":10,
+            "cantidad":1
         },
         {
             "tipo":"Auto",
@@ -103,7 +115,8 @@
             "precio":"13000000",
             "caracteristicas": "Modelo 2022, 0Km, 1.8",
             "img": "./img/Producto/auto/auto2.png",
-            "idProducto":11
+            "idProducto":11,
+            "cantidad":1
         },
         {
             "tipo":"Auto",
@@ -111,7 +124,8 @@
             "precio":"4000000",
             "caracteristicas": "Modelo 2022, 0km, Hybrid",
             "img": "./img/Producto/auto/auto3.png",
-            "idProducto":12
+            "idProducto":12,
+            "cantidad":1
         },
         {
             "tipo":"Camioneta",
@@ -119,7 +133,8 @@
             "precio":"3500000",
             "caracteristicas": "Modelo 2022, 2.0, 0km",
             "img": "./img/Producto/camioneta/camioneta1.webp",
-            "idProducto":13
+            "idProducto":13,
+            "cantidad":1
         },
         {
             "tipo":"Camioneta",
@@ -127,7 +142,8 @@
             "precio":"13000000",
             "caracteristicas": "Modelo 2022, 0Km, 2.4, tdi, 4x4",
             "img": "./img/Producto/camioneta/camioneta2.png",
-            "idProducto":14
+            "idProducto":14,
+            "cantidad":1
         },
         {
             "tipo":"Camioneta",
@@ -135,7 +151,8 @@
             "precio":"4000000",
             "caracteristicas": "Modelo 2021, 7.000km, V6",
             "img": "./img/Producto/camioneta/camioneta3.png",
-            "idProducto":15
+            "idProducto":15,
+            "cantidad":1
         }   
     ]
 }

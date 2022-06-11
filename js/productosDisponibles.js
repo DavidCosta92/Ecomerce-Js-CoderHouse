@@ -18,8 +18,6 @@ function obtenerProductosAPI(){
         })    
 }
 
-
-
 // aplicar a futuro, para SUBIR PRODUCTOS DESDE LA PAGINA DE CARGA de productos en vez de array...
 class Producto{
     constructor(tipo,nombre,precio,caracteristicas,img,idProducto){
@@ -151,32 +149,32 @@ function pedirLogin(){
         message: 'Por favor coloca Usuario y contraseña para continuar',
         placeholder: 'Usuario',
         callback: function (usuarioIngresado) {
-            if(usuarioIngresado==""){
-                alert("Por favor coloca un usuario valido");
-            } else {
-                let usuarioRegistradoEnStorage= JSON.parse(localStorage.getItem(usuarioIngresado));
-                if(usuarioRegistradoEnStorage){
-                    //pedir contraseña
-                    vex.dialog.prompt({
-                    message: 'Por favor contraseña',
+            let usuarioRegistradoEnStorage= JSON.parse(localStorage.getItem(usuarioIngresado));
+            if(usuarioRegistradoEnStorage==null){
+                //alert("Por favor coloca un usuario valido");
+                vex.dialog.confirm({
+                    message: 'El usuario no esta registrado, ¡Quieres registrarte?',
+                    callback: function (value) {
+                        if(value){
+                            window.location="./views/nuevoUsuario.html";
+                        } 
+                    }
+                })
+            }else {
+                vex.dialog.prompt({
+                    message: 'Por favor, ingresa la contraseña',
                     placeholder: 'Contraseña',
                     callback: function (value) {
                         if(value==usuarioRegistradoEnStorage.contraseña){
-                        // si contraseña correcta, loguear y actualizar
                             alertaLoginExitoso();
                             sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioRegistradoEnStorage));
-                            
                             }
                         }
                     })
-                }
             }
         }
     })
 }
-
-
-
 
 
 function toastAgregarCarro(productoPorAgregar){

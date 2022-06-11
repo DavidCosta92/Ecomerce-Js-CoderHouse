@@ -1,5 +1,4 @@
 *{
-
     box-sizing: border-box;
  }
 .contenedorNavbar{
@@ -10,19 +9,38 @@
     background-color: rgba(175, 175, 175, 0.1);
 }
 .contenedorNav{
-    width: 80%;
+    width: 70%;
+}
+.navbar-toggler{
+    font-size: 1rem;
 }
 .logoNavbar{
     max-width: 30px;
     margin-right: 5px;
 }
 .logoCarrito{
-    width: 4%;
-    margin: auto;
+    width: 5%;
+    margin-left: 10%;
+}
+.navbar-brand{
+    margin-right: 0;
+}
+.navbar-brand {
+    padding: 10px 0;
+}
+.navbar-collapse{
+    justify-content: end;
 }
 .logoUsuario{
-    width: 6%;
+    width: 9%;
     margin: auto;
+    text-align: center;
+}
+#nombreUsuarioRegistrado{
+    font-size: 1rem;
+    font-weight:800;
+    color: purple;
+    text-decoration: underline;
 }
 
 .logoCarrito img{
@@ -36,13 +54,12 @@
     max-height: 30vh;
 }
 .tituloProductos {
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    line-height: 6rem;
     background-color:rgba(60, 60, 167,0.3);
     text-align: center;
     margin: 0;
-    padding-top: 30px;
+    padding: 6px;
 }
 
 .cardsDeProductos {
@@ -51,8 +68,8 @@
     justify-content: space-around;
     padding-top: 20px;
     padding-bottom: 50px;
-
 }
+
 .cardsDeProductos{
   background-color: rgba(60, 60, 167,0.1);
 }
@@ -68,12 +85,12 @@
     font-weight: 700;
 }
 .footer{
-    height: 150px;
     background-color: rgba(60, 60, 167,0.3);
     display: flex;
+    flex-wrap: wrap;
 }
 .logoFooter{
-    height: 80%;
+    height: 80px;
     margin: 1% 2% 2% 1%;
 }
 .textosFooter{
@@ -160,7 +177,7 @@
 .formularioLogin{
     height: 50vh;
     background-color: rgba(60, 60, 167,0.1);
-    padding: 50px;
+    padding: 10px;
 }
 
 .formularioRegistroUsuario{

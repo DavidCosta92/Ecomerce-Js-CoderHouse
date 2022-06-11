@@ -1,11 +1,4 @@
 //Obtener productos desde array
-function ArrayProductosParaViews(array){
-    for(const producto of array){
-        producto.img="."+producto.img;
-    }
-    return array;
-}
-
 function arrayTipos(array,tipo){
     let arrayDelTipo=[];
     for(const producto of array){

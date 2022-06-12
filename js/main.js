@@ -24,7 +24,7 @@ function cargarProductosDeArrayACards(array){
                     <p class="card-text textoPrecioCardProducto">$${producto.precio}</p>
     
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button id="agregar${producto.idProducto}" type="button" onclick="agregarAlCarrito(${producto.idProducto})" class="btn btn-success"> Agregar </button>
+                        <button id="agregar${producto.idProducto}" type="button" onclick="agregarAlCarrito(${producto.idProducto})" class="btn btn-success btnAgregarProducto"> Agregar </button>
                     </div>
                 </div>
             </div>      

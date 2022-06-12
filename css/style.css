@@ -125,6 +125,12 @@
 .fotoProductoCard{
      object-fit: contain;
 }
+.btnAgregarProducto:active{
+    background-color: rgba(60, 60, 167,0.5);
+}
+.btnAgregarProducto:hover{
+    background-color: rgba(60, 60, 167,1);
+}
 
 .productoEscondido{
     display: none;
@@ -133,6 +139,26 @@
 .tablaCarrito{
     margin: 50px;
 }
+.txtCenter{
+    text-align: center;
+}
+.botonesAccion{
+    display: flex;
+    font-weight: 350;
+    justify-content:space-around
+}
+
+.btnAgregar{
+
+}
+.btnBorrar{
+
+}
+
+.btnEliminar{
+    
+}
+
 .sumaTablaPrecio{
     font-weight: 900;
     font-size: 1.1rem;
@@ -141,6 +167,7 @@
 .sumaTabla{
     font-weight: 900;
     font-size: 1.2rem;
+    text-align: center;
 }
 .textoCarroVacio{
     font-weight: 900;

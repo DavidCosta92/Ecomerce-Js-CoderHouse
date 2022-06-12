@@ -6,7 +6,6 @@ let productosDisponibles=[];
 obtenerProductosAPI();
 obtenerCarrito();
 
-
 // Obtener productos desde archivo JSON local
 function obtenerProductosAPI(){
     const URLGET="js/productos.json"
@@ -31,13 +30,10 @@ class Producto{
     }
 }
 
-
-
 // si el usuario no esta logueado, sigue permitiendo la ejecucion, para mostrar productos
 function obtenerCarrito(){
     carritoCompras=usuarioActivo?.carritoCompras; 
 }
-
 
 function confirmacionBorrarDelCarro(idProductoPorBorrar){
     Swal.fire({
@@ -79,23 +75,25 @@ function agregarNuevoProducto(id){
     usuarioActivo.carritoCompras.push(productoPorAgregar)
     actualizarEstadoUsuarioSessionS()
     toastAgregarCarro(productoPorAgregar);
-    modificarBotonAgregar(id);
+
 }
 
 function agregarOtraUnidadAlCarro(id){
     for(const producto of usuarioActivo.carritoCompras){
         if(producto.idProducto==id){
             producto.cantidad++;
+            toastAgregarCarro(producto);
             actualizarEstadoUsuarioSessionS();
-            document.getElementById("cantidadProducto"+id).innerHTML=producto.cantidad;
-            document.getElementById("precioTotal"+id).innerHTML=producto.cantidad*producto.precio;
             actualizarDatosCarrito();
-            
+            //para trabajar sobre el carrito, con boton +1
+            document.getElementById("cantidadProducto"+id).innerHTML=producto.cantidad;
+            document.getElementById("precioTotal"+id).innerHTML=producto.cantidad*producto.precio;            
         }
     }
 }
 
 function quitarUnaUnidadDelCarro(id){
+    //para trabajar sobre el carrito, con boton -1
     for(const producto of usuarioActivo.carritoCompras){
         if(producto.idProducto==id){
             if(producto.cantidad>1){
@@ -113,31 +111,22 @@ function quitarUnaUnidadDelCarro(id){
 }
 
 function agregarAlCarrito(idProductoPorAgregar){
+    let productoEnCarro=false;
     if(usuarioActivo){
-        let productoEnCarro;
         for(const producto of usuarioActivo.carritoCompras){
+            //si esta el producto
             if(producto.idProducto==idProductoPorAgregar){
                 productoEnCarro=true;
-            } else {
-                productoEnCarro=false;
+                agregarOtraUnidadAlCarro(idProductoPorAgregar);
             }
         }
-        if(!productoEnCarro){
+        //si no esta
+        if(productoEnCarro==false){
             agregarNuevoProducto(idProductoPorAgregar);
-
-        }else if(productoEnCarro){
-            agregarOtraUnidadAlCarro(idProductoPorAgregar);
-
         }
     } else {
         pedirLogin();
     }
-}
-
-function modificarBotonAgregar(idProductoPorAgregar){
-    let botonAgregarPorCambiar=document.getElementById("agregar"+idProductoPorAgregar);
-    botonAgregarPorCambiar.style.backgroundColor="rgba(60, 60, 167,0.9)";
-    botonAgregarPorCambiar.innerHTML="En carrito";
 }
 
 function actualizarEstadoUsuarioSessionS(){

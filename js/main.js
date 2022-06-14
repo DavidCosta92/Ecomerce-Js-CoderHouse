@@ -53,23 +53,10 @@ function busquedaCategoria(evento){
         }
     }
 }
-/*
-// Obtener productos desde archivo JSON local
-function obtenerProductosAPIArray(){
-    const URLGET="js/productos.json"
-    fetch(URLGET)
-        .then((resultado) => resultado.json())
-        .then((info)=>{
-            productosDisponibles=info.productosDisponibles;
-            //cargarProductosDeArrayACards(productosDisponibles)
-        })    
-}
-*/
 
 // BUSQUEDA AL ESCRIBIR LETRAS
-
 let campoBusqueda=document.getElementById("campoDeBusqueda");
-
+let textoBusquedaVacia=document.getElementById("textoBusquedaVacia");
 
 campoBusqueda.onkeyup=()=>{
     let arrayResultadoBusqueda=[];
@@ -81,7 +68,17 @@ campoBusqueda.onkeyup=()=>{
     }
     let contenedorDeCards = document.getElementById("cardsDeProductos");
     contenedorDeCards.innerHTML="";
+
+
+    
     cargarProductosDeArrayACards(arrayResultadoBusqueda);
+    textoBusquedaVacia.innerHTML="¡Lo lamentamos pero no tenemos el producto buscado..";
+
+    
+    if(contenedorDeCards==""){
+        console.log("hola estoy vacio")
+        textoBusquedaVacia.innerHTML="¡Lo lamentamos pero no tenemos el producto buscado..";
+    }
 }
 
 

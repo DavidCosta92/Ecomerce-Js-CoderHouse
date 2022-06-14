@@ -37,7 +37,7 @@
     text-align: center;
 }
 #nombreUsuarioRegistrado{
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight:800;
     color: purple;
     text-decoration: underline;
@@ -54,7 +54,6 @@
     max-height: 30vh;
 }
 .tituloProductos {
-    font-size: 1.5rem;
     font-weight: 600;
     background-color:rgba(60, 60, 167,0.3);
     text-align: center;
@@ -116,13 +115,13 @@
 }
 .logosRedesFooter{
     width: 30px;
-
 }
 .contenedorFotoProductoCard{
     height: 250px;
     margin: auto;
-
 }
+
+
 .fotoProductoCard{
      object-fit: contain;
 }
@@ -137,9 +136,6 @@
     display: none;
 }
 
-.tablaCarrito{
-    margin: 50px;
-}
 .txtCenter{
     text-align: center;
 }
@@ -153,11 +149,14 @@
 
 }
 .btnBorrar{
-
+    margin: 1px;
 }
 
 .btnEliminar{
     
+}
+#tablaCarrito{
+
 }
 
 .sumaTablaPrecio{
@@ -214,4 +213,10 @@
 }
 
 
-/* vex */
+@media (min-width: 1024px){
+    #nombreUsuarioRegistrado{
+        font-size: 1.1rem;
+    }
+
+}
+

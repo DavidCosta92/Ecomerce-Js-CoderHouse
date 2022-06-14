@@ -60,7 +60,6 @@ function borrarDelCarrito(idProductoPorBorrar){
     let indexProductoPorBorrar= carritoCompras.findIndex(producto =>producto.idProducto==idProductoPorBorrar);
     let elementoBorrado= carritoCompras.splice(indexProductoPorBorrar,1);
     actualizarEstadoUsuarioSessionS(); 
-    toastBorradoCarro(elementoBorrado); 
     let filaABorrar= document.getElementById(`fila${idProductoPorBorrar}`);
     document.getElementById("tBodyCarrito").removeChild(filaABorrar);
     actualizarDatosCarrito();

@@ -54,7 +54,6 @@ function mostrarCarritoTabla(){
         filaTitulo.innerHTML=`
         <th colspan="2">Producto</th>
         <th class="txtCenter">Cantidad</th>
-        <th class="txtCenter">Precio Un</th>
         <th class="txtCenter">Precio Total</th>
         <th class="txtCenter">Acciones</th>`;
         tTiulo.appendChild(filaTitulo);
@@ -70,12 +69,11 @@ function mostrarCarritoTabla(){
             fila.innerHTML=`
                         <td colspan="2">${producto.tipo} ${producto.nombre}</td>
                         <td class="txtCenter" id="cantidadProducto${producto.idProducto}">${producto.cantidad}</td>
-                        <td class="txtCenter">$ ${+producto.precio}</td>
                         <td class="txtCenter" id="precioTotal${producto.idProducto}">$ ${+producto.precio*producto.cantidad}</td>
                         <td class="botonesAccion">
                             <button type="button" onclick="agregarOtraUnidadAlCarro(${producto.idProducto})" class="btn btn-success btnAgregar"> + 1 </button>
                             <button type="button" onclick="quitarUnaUnidadDelCarro(${producto.idProducto})" class="btn btn-warning btnBorrar"> - 1 </button>
-                            <button type="button" onclick="confirmacionBorrarDelCarro(${producto.idProducto})" class="btn btn-danger btnEliminar"> Eliminar </button>
+                            <button type="button" onclick="confirmacionBorrarDelCarro(${producto.idProducto})" class="btn btn-danger btnEliminar"> X </button>
 
                         </td>`;
                         tBody.appendChild(fila);

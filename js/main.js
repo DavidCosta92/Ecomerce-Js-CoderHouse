@@ -38,18 +38,55 @@ function mostrarCategoria(categoria){
     cargarProductosDeArrayACards(arrayTipos(productosDisponibles,categoria));
 }
 
-// buscar con nav.. 
+// buscar con nav y submit.. 
 let busquedaCategoriaForm=document.getElementById("busquedaCategoria");
 busquedaCategoriaForm.addEventListener("submit",busquedaCategoria);
 
 function busquedaCategoria(evento){
-    if(isNaN(campoDeBusqueda.value)&& campoDeBusqueda.value!=""){
+    if(isNaN(campoBusqueda.value)&& campoBusqueda.value!=""){
         evento.preventDefault();
-        let categoriaBusqueda=campoDeBusqueda.value;
+        let categoriaBusqueda=campoBusqueda.value;
         mostrarCategoria(categoriaBusqueda);
-    } if(!isNaN(campoDeBusqueda.value)){
-        campoDeBusqueda.oninput=()=>{
+    } if(!isNaN(campoBusqueda.value)){
+        campoBusqueda.oninput=()=>{
             document.campoDeBusqueda.style.color="red";
         }
     }
 }
+/*
+// Obtener productos desde archivo JSON local
+function obtenerProductosAPIArray(){
+    const URLGET="js/productos.json"
+    fetch(URLGET)
+        .then((resultado) => resultado.json())
+        .then((info)=>{
+            productosDisponibles=info.productosDisponibles;
+            //cargarProductosDeArrayACards(productosDisponibles)
+        })    
+}
+*/
+
+// BUSQUEDA AL ESCRIBIR LETRAS
+
+let campoBusqueda=document.getElementById("campoDeBusqueda");
+
+
+campoBusqueda.onkeyup=()=>{
+    let arrayResultadoBusqueda=[];
+    for(const producto of productosDisponibles){
+        let tipo = producto.tipo.toLowerCase();
+        if(tipo.indexOf(campoBusqueda.value.toLowerCase()) !==-1){
+            arrayResultadoBusqueda.push(producto)
+        }
+    }
+    let contenedorDeCards = document.getElementById("cardsDeProductos");
+    contenedorDeCards.innerHTML="";
+    cargarProductosDeArrayACards(arrayResultadoBusqueda);
+}
+
+
+
+
+
+
+

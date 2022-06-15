@@ -11,6 +11,11 @@ let iconoCategoriaNotebook= document.getElementById("notebook");
 let iconoCategoriaLineaBlanca= document.getElementById("lineaBlanca");
 let iconoCategoriaTv= document.getElementById("tv");
 
+
+let radioTipo= document.getElementById("flexRadioDefault1");
+let radioPrecioAscendente= document.getElementById("flexRadioDefault2");
+let radioPrecioDescendente= document.getElementById("flexRadioDefault3");
+
 //llamado funciones iniciales y eventos
 // BUSQUEDA AL ESCRIBIR LETRAS
 campoBusqueda.onkeyup=()=> busquedaPorLetra(campoBusqueda.value);
@@ -24,10 +29,46 @@ iconoCategoriaNotebook.onclick=()=> busquedaPorLetra("notebook");
 iconoCategoriaLineaBlanca.onclick=()=> busquedaPorLetra("lineaBlanca");
 iconoCategoriaTv.onclick=()=> busquedaPorLetra("tv");
 
+//ORDEN CON RADIOS
+radioTipo.onclick=()=>ordenarPorTipo(productosDisponibles);
+radioPrecioAscendente.onclick=()=>ordenarPorPrecioAscendente(productosDisponibles);
+radioPrecioDescendente.onclick=()=>ordenarPorPrecioDescendente(productosDisponibles);;
+
+
+function ordenarPorTipo(array){ 
+    cargarProductosDeArrayACards(array);
+}
+
+function ordenarPorPrecioAscendente(array){
+    array.sort(function (a, b) {
+        if (a.precio > b.precio) {
+          return 1;
+        }
+        if (a.precio < b.precio) {
+          return -1;
+        }
+        return 0;
+      });
+      cargarProductosDeArrayACards(array)
+}
+
+function ordenarPorPrecioDescendente(array){
+    array.sort(function (a, b) {
+        if (a.precio < b.precio) {
+          return 1;
+        }
+        if (a.precio > b.precio) {
+          return -1;
+        }
+        return 0;
+      });
+      cargarProductosDeArrayACards(array)
+}
 
 
 function cargarProductosDeArrayACards(array){
     let cardsDeProductos = document.getElementById("cardsDeProductos");
+    cardsDeProductos.innerHTML ="";
         for(const producto of array){
             let card = document.createElement("div");           
             card.innerHTML = `
@@ -68,7 +109,6 @@ function mostrarCategoria(categoria){
 
 function busquedaPorLetra(letra){
     let textoIngresado = letra.toLowerCase();
-    console.log(textoIngresado);
     let arrayResultadoBusqueda=[];
     for(const producto of productosDisponibles){
         let tipo = producto.tipo.toLowerCase();

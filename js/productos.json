@@ -3,7 +3,7 @@
         [{
             "tipo":"Notebook",
             "nombre":"Bgh",
-            "precio":"20000",
+            "precio":"200",
             "caracteristicas": "4gb ram, 256gb sdd, 12 pulgadas",
             "img": "./img/Producto/note-bgh/note-bgh-1.png",
             "idProducto":1,
@@ -21,7 +21,7 @@
         {
             "tipo":"Notebook",
             "nombre":"Acer",
-            "precio":"4000",
+            "precio":"40000",
             "caracteristicas": "4gb ram, \n512gb sdd, \n17.1 pulgadas",
             "img": "./img/Producto/note-bgh/note-bgh-1.png",
             "idProducto":3,

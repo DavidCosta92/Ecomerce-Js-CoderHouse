@@ -34,7 +34,7 @@ function validarFormulario(evento){
     evento.preventDefault();
     if(campoNombre.value==""||campoApellido.value==""||campoMail.value==""||campoContraseña.value==""||campoContraseña2.value==""){
         alert("todos los campos son obligatorios!")
-    }else if(campoContraseña.value==campoContraseña2.value && isNaN(campoNombre.value) && campoNombre.value.length()>2 && isNaN(campoApellido.value) && campoApellido.value.length()>2){
+    }else if(campoContraseña.value==campoContraseña2.value && isNaN(campoNombre.value) && campoNombre.value.length>2 && isNaN(campoApellido.value) && campoApellido.value.length>2){
         u= new Usuario (campoNombre.value,campoApellido.value,campoMail.value,campoContraseña.value);
         localStorage.setItem(campoMail.value, JSON.stringify(u));
         alert("¡Usuario creado correctamente! \n Bienvenido "+u.nombre)

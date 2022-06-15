@@ -64,6 +64,9 @@
     background-color:rgba(60, 60, 167,0.3);
     padding-bottom: 2px;
 }
+#ordenador{
+    text-align: center;
+}
 
 .cardsDeProductos {
     display: flex;

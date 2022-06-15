@@ -1,4 +1,4 @@
-// chequeo de usuario logueado
+// chequeo de usuario logueado, para todas las paginas
 let nombreUsarioActivo=document.getElementById("nombreUsarioActivo");
 let usuarioRegistrado=sessionStorage.getItem("usuarioActivo");
 if(usuarioRegistrado){

@@ -1,12 +1,19 @@
+//variables globales
 let precioCarrito; 
 let leyendaCarroVacio=document.getElementById("carritoVacio");
 let metodosPagoCarroVacio=document.getElementById("metodosPagoCarroVacio");
 let botonFinalizarCompraEfectivo=document.getElementById("botonFinalizarCompraEfectivo");
 let botonFinalizarCompraCredito=document.getElementById("botonFinalizarCompraCredito");
+let btnFinalizarCompraEfectivo = document.getElementById("btnFinalizarCompraEfectivo");
+let btnFinalizarCompraCredito = document.getElementById("btnFinalizarCompraCredito");
 
-
+//llamado funciones iniciales y eventos
 carritoCompras.length==0 && mostrarCarroVacio();
 carritoCompras.length>0 && mostrarCarroConProductos();
+
+btnFinalizarCompraEfectivo.onclick=()=> finalizarCompra();
+btnFinalizarCompraCredito.onclick=()=> finalizarCompra();
+
 
 function calcularPrecioCarrito(){
     precioCarrito=0;
@@ -27,14 +34,12 @@ function actualizarDatosCarrito(){
 }
 
 function mostrarCarroVacio(){
-    //Mostrar leyenda carro vacio y esconder metodos de pago
    leyendaCarroVacio.classList.remove("productoEscondido");
    metodosPagoCarroVacio.classList.add("productoEscondido");
    botonFinalizarCompraEfectivo.classList.add("productoEscondido");
    botonFinalizarCompraCredito.classList.add("productoEscondido");
 }
 function mostrarCarroConProductos(){
-    //Escoder leyenda carro vacio
     leyendaCarroVacio.classList.add("productoEscondido");
     metodosPagoCarroVacio.classList.remove("productoEscondido");
     mostrarCarritoTabla();
@@ -55,7 +60,7 @@ function mostrarCarritoTabla(){
         <th colspan="2">Producto</th>
         <th class="txtCenter">Cantidad</th>
         <th class="txtCenter">Precio Total</th>
-        <th class="txtCenter">Acciones</th>`;
+        <th class="txtCenter txtAccion">Acciones</th>`;
         tTiulo.appendChild(filaTitulo);
         tablaCarrito.appendChild(tTiulo);
     
@@ -71,8 +76,8 @@ function mostrarCarritoTabla(){
                         <td class="txtCenter" id="cantidadProducto${producto.idProducto}">${producto.cantidad}</td>
                         <td class="txtCenter" id="precioTotal${producto.idProducto}">$ ${+producto.precio*producto.cantidad}</td>
                         <td class="botonesAccion">
-                            <button type="button" onclick="agregarOtraUnidadAlCarro(${producto.idProducto})" class="btn btn-success btnAgregar"> + 1 </button>
-                            <button type="button" onclick="quitarUnaUnidadDelCarro(${producto.idProducto})" class="btn btn-warning btnBorrar"> - 1 </button>
+                            <button type="button" onclick="agregarOtraUnidadAlCarro(${producto.idProducto})" class="btn btn-success btnAgregar"> + </button>
+                            <button type="button" onclick="quitarUnaUnidadDelCarro(${producto.idProducto})" class="btn btn-warning btnBorrar"> - </button>
                             <button type="button" onclick="confirmacionBorrarDelCarro(${producto.idProducto})" class="btn btn-danger btnEliminar"> X </button>
 
                         </td>`;

@@ -1,12 +1,14 @@
+//variables globales
 //Busca un usuario activo, y luego obtiene el carrito de compras
 let usuarioActivo=JSON.parse(sessionStorage.getItem("usuarioActivo"))
 let carritoCompras;
 let productosDisponibles=[];
 
+//llamado funciones iniciales y eventos
 obtenerProductosAPI();
 obtenerCarrito();
 
-// Obtener productos desde archivo JSON local
+// Obtener productos desde archivo JSON LOCAL, simulando api
 function obtenerProductosAPI(){
     const URLGET="js/productos.json"
     fetch(URLGET)

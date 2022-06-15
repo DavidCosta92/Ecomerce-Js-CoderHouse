@@ -1,10 +1,13 @@
 
-// formulario login, obtieene los datos del usuario guardado en el local y los guarda en el session como usuario activo
+// SIMULADOR DE LOGIN: obtiene los datos del usuario guardado en el local y 
+//los guarda en el session como usuario activo
 
-formularioLogin.addEventListener("submit",login);
+//variables globales
 let mailRegistrado =document.getElementById("mailRegistrado");
-
 let contraseñaRegistrada =document.getElementById("contraseñaRegistrada");
+
+//llamado funciones iniciales y eventos
+formularioLogin.addEventListener("submit",login);
 
 function login(evento){
     evento.preventDefault();
@@ -22,7 +25,6 @@ function iniciarSession(){
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioRegistradoEnStorage));
     alertaLoginExitoso();
 }
-
 
 function alertaLoginExitoso(){
     let timerInterval

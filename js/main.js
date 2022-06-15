@@ -1,13 +1,30 @@
-//Obtener productos desde array
-function arrayTipos(array,tipo){
-    let arrayDelTipo=[];
-    for(const producto of array){
-        if(producto.tipo==tipo){
-            arrayDelTipo.push(producto);
-        }
-    }
-    return arrayDelTipo;
-}
+//variables globales
+let campoBusqueda=document.getElementById("campoDeBusqueda");
+let textoBusquedaVacia=document.getElementById("textoBusquedaVacia");
+let cardsDeProductos = document.getElementById("cardsDeProductos");
+
+let iconoCategoriaTodo= document.getElementById("textoVerTodo");
+let iconoCategoriaAuto= document.getElementById("auto");
+let iconoCategoriaCamioneta= document.getElementById("camioneta");
+let iconoCategoriaCelular= document.getElementById("celular");
+let iconoCategoriaNotebook= document.getElementById("notebook");
+let iconoCategoriaLineaBlanca= document.getElementById("lineaBlanca");
+let iconoCategoriaTv= document.getElementById("tv");
+
+//llamado funciones iniciales y eventos
+// BUSQUEDA AL ESCRIBIR LETRAS
+campoBusqueda.onkeyup=()=> busquedaPorLetra(campoBusqueda.value);
+
+// ICONOS CATEGORIAS
+iconoCategoriaTodo.onclick=()=> busquedaPorLetra("");
+iconoCategoriaAuto.onclick=()=> busquedaPorLetra("auto");
+iconoCategoriaCamioneta.onclick=()=> busquedaPorLetra("camioneta");
+iconoCategoriaCelular.onclick=()=> busquedaPorLetra("celular");
+iconoCategoriaNotebook.onclick=()=> busquedaPorLetra("notebook");
+iconoCategoriaLineaBlanca.onclick=()=> busquedaPorLetra("lineaBlanca");
+iconoCategoriaTv.onclick=()=> busquedaPorLetra("tv");
+
+
 
 function cargarProductosDeArrayACards(array){
     let cardsDeProductos = document.getElementById("cardsDeProductos");
@@ -22,7 +39,6 @@ function cargarProductosDeArrayACards(array){
                     <h2 class="card-title">${producto.nombre}</h2>
                     <h5 class="card-subtitle mb-2 text-muted">${producto.caracteristicas}</h5>
                     <p class="card-text textoPrecioCardProducto">$${producto.precio}</p>
-    
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <button id="agregar${producto.idProducto}" type="button" onclick="agregarAlCarrito(${producto.idProducto})" class="btn btn-success btnAgregarProducto"> Agregar </button>
                     </div>
@@ -33,57 +49,42 @@ function cargarProductosDeArrayACards(array){
         }
 }
 
+function arrayTipos(array,tipo){
+    let arrayDelTipo=[];
+    for(const producto of array){
+        if(producto.tipo==tipo){
+            arrayDelTipo.push(producto);
+        }
+    }
+    return arrayDelTipo;
+}
+
 function mostrarCategoria(categoria){
     document.getElementById("cardsDeProductos").innerHTML="";
     cargarProductosDeArrayACards(arrayTipos(productosDisponibles,categoria));
 }
 
-// buscar con nav y submit.. 
-let busquedaCategoriaForm=document.getElementById("busquedaCategoria");
-busquedaCategoriaForm.addEventListener("submit",busquedaCategoria);
 
-function busquedaCategoria(evento){
-    if(isNaN(campoBusqueda.value)&& campoBusqueda.value!=""){
-        evento.preventDefault();
-        let categoriaBusqueda=campoBusqueda.value;
-        mostrarCategoria(categoriaBusqueda);
-    } if(!isNaN(campoBusqueda.value)){
-        campoBusqueda.oninput=()=>{
-            document.campoDeBusqueda.style.color="red";
-        }
-    }
-}
 
-// BUSQUEDA AL ESCRIBIR LETRAS
-let campoBusqueda=document.getElementById("campoDeBusqueda");
-let textoBusquedaVacia=document.getElementById("textoBusquedaVacia");
-
-campoBusqueda.onkeyup=()=>{
+function busquedaPorLetra(letra){
+    let textoIngresado = letra.toLowerCase();
+    console.log(textoIngresado);
     let arrayResultadoBusqueda=[];
     for(const producto of productosDisponibles){
         let tipo = producto.tipo.toLowerCase();
-        if(tipo.indexOf(campoBusqueda.value.toLowerCase()) !==-1){
+        if(tipo.indexOf(textoIngresado) !==-1){
             arrayResultadoBusqueda.push(producto)
         }
     }
     let contenedorDeCards = document.getElementById("cardsDeProductos");
     contenedorDeCards.innerHTML="";
 
-
-    
     cargarProductosDeArrayACards(arrayResultadoBusqueda);
-    textoBusquedaVacia.innerHTML="¡Lo lamentamos pero no tenemos el producto buscado..";
-
-    
-    if(contenedorDeCards==""){
-        console.log("hola estoy vacio")
+    if(arrayResultadoBusqueda.length==0 && textoIngresado!=""){ 
         textoBusquedaVacia.innerHTML="¡Lo lamentamos pero no tenemos el producto buscado..";
+        cardsDeProductos.appendChild(textoBusquedaVacia);
+    } if(textoIngresado==""){ 
+        contenedorDeCards.innerHTML="";
+        cargarProductosDeArrayACards(productosDisponibles);
     }
 }
-
-
-
-
-
-
-

@@ -40,29 +40,29 @@ function ordenarPorTipo(array){
 }
 
 function ordenarPorPrecioAscendente(array){
-    array.sort(function (a, b) {
-        if (a.precio > b.precio) {
+    let arrayOrdenado=array.sort(function (a, b) {
+        if (parseInt(a.precio) > parseInt(b.precio)) {
           return 1;
         }
-        if (a.precio < b.precio) {
+        if (parseInt(a.precio) < parseInt(b.precio)) {
           return -1;
         }
         return 0;
       });
-      cargarProductosDeArrayACards(array)
+      cargarProductosDeArrayACards(arrayOrdenado)
 }
 
 function ordenarPorPrecioDescendente(array){
-    array.sort(function (a, b) {
-        if (a.precio < b.precio) {
+    let arrayOrdenado=array.sort(function (a, b) {
+        if (parseInt(a.precio)  < parseInt(b.precio)) {
           return 1;
         }
-        if (a.precio > b.precio) {
+        if (parseInt(a.precio) > parseInt(b.precio)) {
           return -1;
         }
         return 0;
       });
-      cargarProductosDeArrayACards(array)
+      cargarProductosDeArrayACards(arrayOrdenado)
 }
 
 

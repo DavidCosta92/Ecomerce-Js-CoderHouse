@@ -3,7 +3,7 @@
         [{
             "tipo":"Notebook",
             "nombre":"Bgh",
-            "precio":"200",
+            "precio":"2000",
             "caracteristicas": "4gb ram, 256gb sdd, 12 pulgadas",
             "img": "./img/Producto/note-bgh/note-bgh-1.png",
             "idProducto":1,

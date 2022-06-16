@@ -30,40 +30,9 @@ iconoCategoriaLineaBlanca.onclick=()=> busquedaPorLetra("lineaBlanca");
 iconoCategoriaTv.onclick=()=> busquedaPorLetra("tv");
 
 //ORDEN CON RADIOS
-radioTipo.onclick=()=>ordenarPorTipo(productosDisponibles);
+radioTipo.onclick=()=>cargarProductosDeArrayACards(productosDisponibles);
 radioPrecioAscendente.onclick=()=>ordenarPorPrecioAscendente(productosDisponibles);
 radioPrecioDescendente.onclick=()=>ordenarPorPrecioDescendente(productosDisponibles);;
-
-
-function ordenarPorTipo(array){ 
-    cargarProductosDeArrayACards(array);
-}
-
-function ordenarPorPrecioAscendente(array){
-    let arrayOrdenado=array.sort(function (a, b) {
-        if (parseInt(a.precio) > parseInt(b.precio)) {
-          return 1;
-        }
-        if (parseInt(a.precio) < parseInt(b.precio)) {
-          return -1;
-        }
-        return 0;
-      });
-      cargarProductosDeArrayACards(arrayOrdenado)
-}
-
-function ordenarPorPrecioDescendente(array){
-    let arrayOrdenado=array.sort(function (a, b) {
-        if (parseInt(a.precio)  < parseInt(b.precio)) {
-          return 1;
-        }
-        if (parseInt(a.precio) > parseInt(b.precio)) {
-          return -1;
-        }
-        return 0;
-      });
-      cargarProductosDeArrayACards(arrayOrdenado)
-}
 
 
 function cargarProductosDeArrayACards(array){
@@ -127,4 +96,30 @@ function busquedaPorLetra(letra){
         contenedorDeCards.innerHTML="";
         cargarProductosDeArrayACards(productosDisponibles);
     }
+}
+
+function ordenarPorPrecioAscendente(array){
+    let arrayOrdenado=array.sort(function (a, b) {
+        if (parseInt(a.precio) > parseInt(b.precio)) {
+          return 1;
+        }
+        if (parseInt(a.precio) < parseInt(b.precio)) {
+          return -1;
+        }
+        return 0;
+      });
+      cargarProductosDeArrayACards(arrayOrdenado)
+}
+
+function ordenarPorPrecioDescendente(array){
+    let arrayOrdenado=array.sort(function (a, b) {
+        if (parseInt(a.precio)  < parseInt(b.precio)) {
+          return 1;
+        }
+        if (parseInt(a.precio) > parseInt(b.precio)) {
+          return -1;
+        }
+        return 0;
+      });
+      cargarProductosDeArrayACards(arrayOrdenado)
 }

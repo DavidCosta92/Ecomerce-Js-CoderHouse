@@ -102,6 +102,13 @@
     font-size: 1.2rem;
     margin-top: 3%;
 }
+#textoVerTodo:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    border-radius: 10%;
+    background-color: rgba(60, 60, 167,0.5);
+    margin-top: 25px;
+}
 .footer{
     background-color: rgba(60, 60, 167,0.3);
     display: flex;
